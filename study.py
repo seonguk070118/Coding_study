@@ -1,4 +1,2 @@
-a=input()
-b=input()
-c=float(a)+float(b)
-print(c)
+n=ord(input())
+print(n)

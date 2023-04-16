@@ -1,2 +1,2 @@
-n=ord(input())
-print(n)
+n=int(input())
+print(chr(n))

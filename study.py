@@ -1,2 +1,3 @@
-n=int(input())
-print(-n)
+n,m=input().split()
+mi=int(n)-int(m)
+print(mi)

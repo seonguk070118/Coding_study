@@ -8,28 +8,25 @@
 </head>
 <body>
     <button id="myButton">클릭하세요!</button>
-    <button id="myButton2">클릭하세요!</button>
-    <button id="myButton3">클릭하세요!</button>
+    <ul>
+        <li>할 일 1</li>
+        <li class="done">할 일 2</li>
+        <li>할 일 3</li>
+        <li class="done">할 일 4</li>
+        <li>할 일 5</li>
+    </ul>
     <script>
         //버튼요소 가져오기
         const button = document.getElementById("myButton");
-        const button2 = document.getElementById("myButton2");
-        const button3 = document.getElementById("myButton3");
 
-        //클릭 이벤트 리스너 들록
-        button.addEventListener("click",function(){
-            //버튼의 텍스트 변경
+        button.addEventListener("click",function() {
             button.textContent="클릭되었습니다!";
-        });
 
-        button2.addEventListener("click",function(){
-            button2.style.color="white";
+            const doneElements = document.querySelectorAll(".done");
+            for(let i = 0;i < doneElements.length;i++){
+                doneElements[i].parentNode.removeChild(doneElements[i]);
+            }
         });
-
-        button3.addEventListener("click",function(){
-            document.write("3번버튼이 클릭되었습니다.");
-        });
-
     </script>
 </body>
 </html>

@@ -5,4 +5,3 @@ public class study {
 		System.out.println("ÇÑ±Û");
 	}
 }
-

@@ -2,6 +2,8 @@ package mypack;
 
 public class study {
 	public static void main(String[] args) {
-		System.out.println("한글");
+		int a=3;
+		String b="화면";
+		System.out.println(a+b);
 	}
 }

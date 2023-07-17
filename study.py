@@ -1,4 +1,5 @@
-#multistring.py
-print("="*50)
-print("My Program")
-print("="*50)
+pin="881120-1068234"
+yyyymmdd=pin[:6]
+num=pin[7:]
+print(yyyymmdd)
+print(num)

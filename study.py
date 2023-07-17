@@ -1,4 +1,4 @@
-a={'A':90,'B':80,'C':70}
-result=a.pop('B')
-print(a)
-print(result)
+a=[1,1,1,2,2,3,3,3,4,4,5]
+aSet=set(a)
+b=list(aSet)
+print(b)

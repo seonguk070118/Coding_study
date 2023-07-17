@@ -1,4 +1,3 @@
-a=[1,3,5,4,2]
-a.sort()
-a.reverse()
-print(a)
+a=['Life','is','too','short']
+result=" ".join(a)
+print(result)

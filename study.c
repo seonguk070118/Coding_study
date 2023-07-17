@@ -6,21 +6,12 @@
 
 int main()
 {
-	int t,s1,s2;
-	scanf("%d %d %d",&t,&s1,&s2);
-	s1+=1;
-	while(1){
-		t+=5;
-		if(t>=90)
-		{
-			if(s1>s2) printf("win");
-			else if(s1=s2) printf("same");
-			else printf("lose");
-			return 0;
-		}
-	 	s1+=1;
-	 	printf("%d ",t);
-	 	printf("%d\n",s1);
-	}
+	float a,b,c,d,A,B;
+	scanf("%d %d %d %d",&a,&b,&c,&d);
+	A=a/b;
+	B=c/d;
+	if(A>B) printf(">");
+	else if(A<B) printf("<");
+	else printf("=");
 }
 

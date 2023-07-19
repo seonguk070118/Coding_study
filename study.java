@@ -2,16 +2,30 @@ package mypack;
 
 public class study {
 	public static void main(String[] ar) {
-		// float의 정밀도(대략 소수 7자리)
-		float f1 = 1.0000001f;
-		System.out.println(f1);
-		float f2 = 1.00000001f;
-		System.out.println(f2);
+		// boolean: true / false
+		boolean bool1 = true;
+		boolean bool2 = false;
+		System.out.println(bool1);
+		System.out.println(bool2);
+		System.out.println();
 		
-		// double의 정밀도(대략 소수 15자리)
-		double d1 = 1.000000000000001;
-		System.out.println(d1);
-		double d2 = 1.0000000000000001;
-		System.out.println(d2);
+		// 정수(byte,short,int,long): 음의 정수 / 0 / 양의 정수
+		byte value1 = 10;
+		short value2 = -10;
+		int value3 = 100;
+		long value4 = -100L;
+		System.out.println(value1);
+		System.out.println(value2);
+		System.out.println(value3);
+		System.out.println(value4);
+		System.out.println();
+		
+		// 실수(float,double): 음의 실수 / 0 / 양의 실수
+		float value5 = 1.2F;
+		double value6 = -1.5;
+		double value7 = 5;
+		System.out.println(value5);
+		System.out.println(value6);
+		System.out.println(value7);
 	}
 }

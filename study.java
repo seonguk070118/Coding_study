@@ -2,30 +2,31 @@ package mypack;
 
 public class study {
 	public static void main(String[] ar) {
-		// boolean: true / false
-		boolean bool1 = true;
-		boolean bool2 = false;
-		System.out.println(bool1);
-		System.out.println(bool2);
-		System.out.println();
-		
-		// 정수(byte,short,int,long): 음의 정수 / 0 / 양의 정수
-		byte value1 = 10;
-		short value2 = -10;
-		int value3 = 100;
-		long value4 = -100L;
+		// 문자로 저장하는 방법
+		char value1 = 'A';
+		char value2 = '가';
+		char value3 = '3';
 		System.out.println(value1);
 		System.out.println(value2);
 		System.out.println(value3);
-		System.out.println(value4);
 		System.out.println();
 		
-		// 실수(float,double): 음의 실수 / 0 / 양의 실수
-		float value5 = 1.2F;
-		double value6 = -1.5;
-		double value7 = 5;
+		// 정수로 저장하는 방법
+		char value4 = 65;
+		char value5 = 0xac00;
+		char value6 = 51;
+		System.out.println(value4);
 		System.out.println(value5);
 		System.out.println(value6);
+		System.out.println();
+		
+		//유니코드로 직접 입력
+		char value7 = '\u0041';
+		char value8 = '\uac00';
+		char value9 = '\u0033';
 		System.out.println(value7);
+		System.out.println(value8);
+		System.out.println(value9);
+		System.out.println();
 	}
 }

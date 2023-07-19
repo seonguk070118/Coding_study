@@ -1,4 +1,5 @@
-a=[1,1,1,2,2,3,3,3,4,4,5]
-aSet=set(a)
-b=list(aSet)
-print(b)
+pocket=['paper','callphone','money','card']
+if 'card' in pocket:
+    print('버스를 타고 가라')
+else:
+    print("걸어가라")

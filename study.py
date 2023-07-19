@@ -1,6 +1,3 @@
-A=[70,60,55,75,95,90,80,80,85,100]
-total=0
-for score in A:
-    total += score
-average=total/len(A)
-print(average)
+number=[1,2,3,4,5]
+result=[num*2 for num in number if num%2==1]
+print(result)

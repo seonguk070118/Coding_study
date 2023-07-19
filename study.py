@@ -1,5 +1,8 @@
-a=0
-while a<10:
-    a+=1
-    if a%3==0: continue
-    print(a)
+result = 0
+i=1
+while i<=1000:
+    if i%3==0:
+        result += i
+    i+=1
+
+print(result)

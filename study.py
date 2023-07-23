@@ -22,9 +22,17 @@ class MoreFourCal(FourCal):
     def pow(self):
         result=self.first ** self.second
         return result
+    
+class SafeFourCal(FourCal):
+    def div(self):
+        if self.second == 0:
+            return 0
+        else:
+            return self.first/self.second
 a=FourCal(4,2)
 b=FourCal(3,8)
 c=MoreFourCal(4,2)
+d=SafeFourCal(4,0)
 print(a.add())
 print(a.mul())
 print(a.sub())
@@ -34,3 +42,4 @@ print(b.mul())
 print(b.sub())
 print(b.div())
 print(c.pow())
+print(d.div())

@@ -2,10 +2,16 @@ package mypack;
 
 public class study {
 	public static void main(String[] ar) {
-		int i=10;
-		while(i>0) {
-			System.out.println(i);
-			i-=2;
+		for(int i=0;i<10;i++)
+		{
+			for(int j=0;j<5;j++)
+			{
+				if(i==3&&j==2)
+				{
+					i=100;
+					break;
+				}
+			}
 		}
 	}
 }

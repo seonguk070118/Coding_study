@@ -2,17 +2,13 @@ package mypack;
 
 public class study {
 	public static void main(String[] ar) {
-		POS1:
-		for(int i=0;i<10;i++)
-		{
-			for(int j=0;j<10;j++)
-			{
-				if(j==3)
-				{
-					continue POS1;
-				}
-				System.out.println(i+","+j);
-			}
+		int score=72;
+		switch(score/10){
+			case 10:
+			case 9: System.out.println("A"); break;
+			case 8: System.out.println("B"); break;
+			case 7: System.out.println("C"); break;
+			default: System.out.println("F");
 		}
 	}
 }

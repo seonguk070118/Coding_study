@@ -5,14 +5,20 @@
 #include <stdbool.h>
 int main()
 {
-	char a[101];
-	int i;
+	char a[91]={0};
+	int i,j,sum=0;
 	gets(a);
-	for(i=0;a[i]!=0;i++)
+	for(i=97;i<123;i++)
 	{
-		if(a[i]!=' '){
-			printf("%c",a[i]);
+		for(j=0;j<strlen(a);j++)
+		{
+			if(i==a[j])
+			{
+				sum++;
+			}
 		}
+		printf("%c:%d\n",i,sum);
+		sum=0;
 	}
 	return 0;
 }

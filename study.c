@@ -3,22 +3,44 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-int main()
+int a,b,t[100]={0},i,j=0,k=0;
+
+void change()
 {
-	char a[91]={0};
-	int i,j,sum=0;
-	gets(a);
-	for(i=97;i<123;i++)
+	int n;
+	for(j=0;j<a;j++)
 	{
-		for(j=0;j<strlen(a);j++)
+		for(i=0;i<a-1-j;i++)
 		{
-			if(i==a[j])
+			if(t[i]>=t[i+1])
 			{
-				sum++;
+				n=t[i];
+				t[i]=t[i+1];
+				t[i+1]=n;
 			}
 		}
-		printf("%c:%d\n",i,sum);
-		sum=0;
+	}
+}
+
+int main()
+{
+	scanf("%d %d",&a,&b);
+	for(i=0;i<a;i++)
+	{
+		scanf("%d",&t[i]);
+	}
+	change();
+	for(i=0;i<a;i++)
+	{
+		for(j=0;j<b;j++)
+		{
+			if(t[k]!=0)
+			{
+				printf("%d ",t[k]);
+				k++;
+			}
+		}
+		printf("\n");
 	}
 	return 0;
 }

@@ -3,18 +3,24 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-
 int main()
 {
-	int a,i,j;
-	scanf("%d",&a);
-	for(i=0;i<a;i++)
+	int n,i,j;
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
 	{
-		for(j=0;j<i;j++)
+		for(j=1;j<=n;j++)
 		{
-			printf(" ");
+			if((i==1)||(j==1)||(i==n)||(j==n)||(i==j)||(i+j==n+1))
+			{
+				printf("*");
+			}
+			else
+			{
+				printf(" ");
+			}
 		}
-		printf("**\n");
+		printf("\n");
 	}
 	return 0;
 }

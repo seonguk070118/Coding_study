@@ -8,9 +8,11 @@ int n;
 void f()
 {
 	if(n==0)
-		printf("false");
+		printf("zero");
+	else if(n<0)
+		printf("negative");
 	else
-		printf("true");
+		printf("positive");
 }
 
 int main()

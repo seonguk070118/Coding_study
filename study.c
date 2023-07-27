@@ -5,22 +5,35 @@
 #include <stdbool.h>
 int main()
 {
-	int n,i,j;
+	int n,i,j,k;
 	scanf("%d",&n);
-	for(i=1;i<=n;i++)
+	for(i=2;i<=n;i++)
 	{
-		for(j=1;j<=n;j++)
+		if(n%i==0)
 		{
-			if((i==1)||(j==1)||(i==n)||(j==n)||(i==j)||(i+j==n+1))
+			for(j=2;j<=(i)/2;j++)
 			{
-				printf("*");
+				if(i%j==0)
+				{
+					break;
+				}
 			}
-			else
+			
+			for(k=2;k<=(n/i)/2;k++)
 			{
-				printf(" ");
+				if((n/i)%k==0)
+				{
+					break;
+				}
+			}
+			
+			if(j==i/2+1&&k==(n/i)/2+1)
+			{
+				printf("%d %d",i,n/i);
+				return 0;
 			}
 		}
-		printf("\n");
 	}
+	printf("wrong number");
 	return 0;
 }

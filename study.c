@@ -3,21 +3,16 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-int n;
 
-void f()
-{
-	if(n==0)
-		printf("zero");
-	else if(n<0)
-		printf("negative");
-	else
-		printf("positive");
-}
 
 int main()
 {
-  scanf("%d", &n);
-  f(n);
+  int a,b;
+  scanf("%d %d",&a,&b);
+  printf("%d\n",a+b);
+  printf("%d\n",a-b);
+  printf("%d\n",a*b);
+  printf("%d\n",a/b);
+  printf("%d",a%b);
   return 0;
 }

@@ -1,2 +1,7 @@
 a, b=input().split()
+c = int(a)/int(b)
 print(int(a)+int(b))
+print(int(a)-int(b))
+print(int(a)*int(b))
+print(int(c))
+print(int(a)%int(b))

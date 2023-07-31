@@ -1,7 +1,7 @@
 a, b=input().split()
-c = int(a)/int(b)
-print(int(a)+int(b))
-print(int(a)-int(b))
-print(int(a)*int(b))
-print(int(c))
-print(int(a)%int(b))
+if int(a)<int(b):
+    print('<')
+elif int(a)>int(b):
+    print('>')
+else:
+    print('==')

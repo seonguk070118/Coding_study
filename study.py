@@ -1,10 +1,12 @@
-a=int(input())
-b=int(input())
-if a>0 and b>0:
-    print('1')
-elif a<0 and b>0:
-    print('2')
-elif a<0 and b<0:
-    print('3')
-else :
-    print('4')
+a,b=input().split()
+a=int(a)
+b=int(b)
+if b<45:
+    a-=1
+    b=b+60-45
+else:
+    b-=45
+if a<0:
+    a+=24
+print(a,end=' ')
+print(b)

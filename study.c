@@ -7,34 +7,15 @@
 
 int main()
 {
-  int sum=0,i,a;
-  char b;
-  scanf("%d",&a);
-  sum=a;
-  for(i=0;;i++)
+  int a,i,max=0,men=1000001;
+  for(i=0;i<4;i++)
   {
-	scanf("%c%d",&b,&a);
-  	if(b=='+')
-  	{
-  		sum+=a;
-	}
-	else if(b=='-')
-	{
-		sum-=a;
-	}
-	else if(b=='*')
-	{
-		sum*=a;
-	}
-	else if(b=='/')
-	{
-		sum/=a;
-	}
-	else if(b=='=')
-	{
-		break;
-	}
+	scanf("%d\n",&a);
+	if(a>max)
+		max=a;
+	if(a<men)
+		men=a;
   }
-  printf("%d",sum);
+  printf("%d\n%d",max,men);
   return 0;
 }

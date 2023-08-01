@@ -1,12 +1,22 @@
-a,b=input().split()
+a,b,c=input().split()
 a=int(a)
 b=int(b)
-if b<45:
-    a-=1
-    b=b+60-45
+c=int(c)
+if a==b==c:
+    sum=10000+(a*1000)
+elif a==b!=c:
+    sum=1000+(a*100)
+elif a!=b==c:
+    sum=1000+(b*100)
+elif a==c!=b:
+    sum=1000+(c*100)
 else:
-    b-=45
-if a<0:
-    a+=24
-print(a,end=' ')
-print(b)
+    if a>b:
+        max=a
+    else:
+        max=b
+    if max>c:
+        sum=max*100
+    else:
+        sum=c*100
+print(sum)

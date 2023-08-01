@@ -8,7 +8,7 @@
 int main()
 {
 	int i;
-	char a[100]={0};
+	char a[201]={0};
 	gets(a);
 	for(i=0;i<sizeof(a);i++)
 	{
@@ -16,14 +16,14 @@ int main()
 			break;
 		if(isspace(a[i]))
 			printf(" ");
-		else if(a[i]=='x')
-			printf("a");
-		else if(a[i]=='y')
-			printf("b");
-		else if(a[i]=='z')
-			printf("c");
+		else if(a[i]=='a')
+			printf("x");
+		else if(a[i]=='b')
+			printf("y");
+		else if(a[i]=='c')
+			printf("z");
 		else
-			printf("%c",a[i]+3);
+			printf("%c",a[i]-3);
 	}
 	return 0;
 }

@@ -3,27 +3,27 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-#include <ctype.h>
 
 int main()
 {
-	int i;
-	char a[201]={0};
+	int i=0;
+	char a[1001]={0};
 	gets(a);
-	for(i=0;i<sizeof(a);i++)
+	while(a[i])
 	{
-		if(a[i]==0)
-			break;
-		if(isspace(a[i]))
-			printf(" ");
-		else if(a[i]=='a')
-			printf("x");
-		else if(a[i]=='b')
-			printf("y");
-		else if(a[i]=='c')
-			printf("z");
-		else
-			printf("%c",a[i]-3);
+		if(a[i]<58)
+		{
+			printf("%c",a[i]);
+		}
+		else if(a[i]>95)
+		{
+			printf("%c",a[i]-32);
+		}
+		else if(a[i]<95)
+		{
+			printf("%c",a[i]+32);
+		}
+		i++;
 	}
 	return 0;
 }

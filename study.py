@@ -1,8 +1,6 @@
-while(1):
-    a,b=input().split()
-    a=int(a)
-    b=int(b)
-    if a==0 and b==0:
+while 1:
+    try:
+        a,b=map(int,input().split())
+        print(a+b)
+    except:
         break
-    sum=a+b
-    print(sum)

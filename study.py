@@ -1,7 +1,5 @@
-a=input()
-for i in range(10):
-    if i==0:
-        continue
-    print(a+' * '+str(i)+' =',end=' ')
-    b=int(a)*int(i)
-    print(b)
+a=int(input())
+b=int(a/4)
+for i in range(b):
+    print('long',end=' ')
+print('int')

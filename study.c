@@ -7,15 +7,15 @@
 
 int main()
 {
-  int a,i,max=0,men=1000001;
-  for(i=0;i<4;i++)
+  int a,i,j;
+  scanf("%d",&a);
+  for(i=1;i<=9;i++)
   {
-	scanf("%d\n",&a);
-	if(a>max)
-		max=a;
-	if(a<men)
-		men=a;
+  	for(j=0;j<a*i;j++)
+  	{
+  		printf("*");
+	}
+	printf("\n");
   }
-  printf("%d\n%d",max,men);
   return 0;
 }

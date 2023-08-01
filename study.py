@@ -1,5 +1,7 @@
 a=int(input())
-b=int(a/4)
-for i in range(b):
-    print('long',end=' ')
-print('int')
+for i in range(a+1):
+    if i==0:
+        continue
+    for i in range(i):
+        print('*',end='')
+    print()

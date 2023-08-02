@@ -5,23 +5,23 @@
 #include <stdbool.h>
 
 int n;
-int prime()
+char grade()
 {
-	int i;
-	for(i=2;i<n/2;i++)
-	{
-		if(n%i==0)
-		{
-			return 0;
-		}
-	}
-	return 1;
+	if(n>=90)
+		return 'A';
+	else if(n>=80)
+		return 'B';
+	else if(n>=70)
+		return 'C';
+	else if(n>=60)
+		return 'D';
+	else
+		return 'F';
 }
 
 int main()
 {
 	scanf("%d", &n);
-	if(prime(n)) printf("prime");
-	else printf("composite");
+	printf("%c", grade(n));
 	return 0;
 }

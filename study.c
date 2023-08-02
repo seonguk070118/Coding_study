@@ -4,24 +4,19 @@
 #include<string.h>
 #include <stdbool.h>
 
-int n;
-char grade()
+long long int n;
+int abs()
 {
-	if(n>=90)
-		return 'A';
-	else if(n>=80)
-		return 'B';
-	else if(n>=70)
-		return 'C';
-	else if(n>=60)
-		return 'D';
-	else
-		return 'F';
+	if(n<0)
+	{
+		n=~n+1;
+	}
+	return n;
 }
 
 int main()
 {
-	scanf("%d", &n);
-	printf("%c", grade(n));
+	scanf("%lld", &n);
+	printf("%lld\n", abs(n));
 	return 0;
 }

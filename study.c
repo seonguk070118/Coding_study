@@ -4,27 +4,19 @@
 #include<string.h>
 #include <stdbool.h>
 
+int n;
+int zero()
+{
+	if(n==0)
+		return 1;
+	else
+	    return 0;
+}
+
 int main()
 {
-	int i=0;
-	char a[1001]={0};
-	gets(a);
-	while(a[i])
-	{
-		if(a[i]<58)
-		{
-			printf("%c",a[i]);
-		}
-		else if(a[i]>95)
-		{
-			printf("%c",a[i]-32);
-		}
-		else if(a[i]<95)
-		{
-			printf("%c",a[i]+32);
-		}
-		i++;
-	}
+	scanf("%d", &n);
+	if(zero(n)) printf("zero");
+  	else printf("non zero");
 	return 0;
-
 }

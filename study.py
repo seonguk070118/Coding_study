@@ -1,2 +1,6 @@
-a=input()
-print(len(a))
+while 1:
+    try:
+        a=input()
+        print(a)
+    except:
+        break

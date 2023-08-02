@@ -5,18 +5,21 @@
 #include <stdbool.h>
 
 long long int n;
-int abs()
+int sqrt()
 {
-	if(n<0)
-	{
-		n=~n+1;
-	}
-	return n;
+	long long int i;
+	for(i=0;i*i<n;i++);
+	
+	if(i*i==n)
+		return i;
+	else
+		return i-1;
+	
 }
 
 int main()
 {
 	scanf("%lld", &n);
-	printf("%lld\n", abs(n));
+	printf("%d\n", sqrt(n));
 	return 0;
 }

@@ -1,6 +1,6 @@
-a=input()
-b=input()
-sum=0
-for i in range(int(a)):
-    sum+=int(b[i])
-print(sum)
+a=int(input())
+for i in range(a):
+    b,c=input().split()
+    for j in range(len(c)):
+        print(c[j]*int(b),end='')
+    print()

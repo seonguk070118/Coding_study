@@ -6,12 +6,16 @@
 
 double x;
 
-double f(double t)
+long long f(double x)
 {
-	return x-(long long int)t;
+	long long int t=(long long int)x;
+	if(t<x)
+		return x+1;
+	else 
+		return x;
 }
 int main()
 {
-  scanf("%lf", &x);
-  printf("%.14lf\n", f(x));
+	scanf("%lf", &x);
+	printf("%lld\n", f(x));
 }

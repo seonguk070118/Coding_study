@@ -8,10 +8,10 @@ int n;
 
 long long int f()
 {
-	long long int i,sum=0;
+	long long int i,sum=1;
 	for(i=1;i<=n;i++)
 	{
-		sum+=i;
+		sum*=i;
 	}
 	return sum;
 }

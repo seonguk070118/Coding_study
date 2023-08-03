@@ -3,24 +3,17 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
+int n, m;
 
-int n;
-
-long long int f()
+long long int f(int p,int q)
 {
-	long long int i,sum=0;
-	while(n)
-	{
-		sum+=n%10;
-		sum*=10;
-		n/=10;
-	}
-	sum/=10;
+	long long int sum;
+	sum=(long long int)p+(long long int)q;
 	return sum;
 }
 
 int main()
 {
-	scanf("%d", &n);
-	printf("%d\n", f(n));
+	scanf("%d%d", &n, &m);
+	printf("%lld\n", f(n, m));
 }

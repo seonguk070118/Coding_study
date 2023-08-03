@@ -3,20 +3,18 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-long long int n, m;
+int n, m;
 
-long long int f(long long int p,long long int q)
+int max(int p,int q)
 {
-	long long int sum;
-	if(p<q)
-		sum=(long long int)q-(long long int)p;
+	if(p>q)
+		return p;
 	else
-		sum=(long long int)p-(long long int)q;
-	return sum;
+		return q;
 }
 
 int main()
 {
-	scanf("%lld%lld", &n, &m);
-	printf("%lld\n", f(n, m));
+  scanf("%d%d", &n, &m);
+  printf("%d\n", max(n, m));
 }

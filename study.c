@@ -6,12 +6,15 @@
 
 int n;
 
-long long int f()
+int f()
 {
-	long long int i,sum=1;
+	int i,sum=0;
 	for(i=1;i<=n;i++)
 	{
-		sum*=i;
+		if(n%i==0)
+		{
+			sum++;
+		}
 	}
 	return sum;
 }
@@ -19,5 +22,5 @@ long long int f()
 int main()
 {
 	scanf("%d", &n);
-	printf("%lld\n", f(n));
+	printf("%d\n", f(n));
 }

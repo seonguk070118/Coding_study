@@ -6,16 +6,16 @@
 
 int n;
 
-int f()
+long long int f()
 {
-	int i,sum=0;
-	for(i=1;i<=n;i++)
+	long long int i,sum=0;
+	while(n)
 	{
-		if(n%i==0)
-		{
-			sum++;
-		}
+		sum+=n%10;
+		sum*=10;
+		n/=10;
 	}
+	sum/=10;
 	return sum;
 }
 

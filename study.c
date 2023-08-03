@@ -9,10 +9,12 @@ double x;
 long long f(double x)
 {
 	long long int t=(long long int)x;
-	if(t<x)
-		return x+1;
-	else 
+	if(x==0)
+		return 0;
+	else if(t<x)
 		return x;
+	else 
+		return x-1;
 }
 int main()
 {

@@ -4,20 +4,20 @@
 #include<string.h>
 #include <stdbool.h>
 
-double x;
+int n;
 
-long long f(double x)
+long long int f()
 {
-	long long int t=(long long int)x;
-	if(x==0)
-		return 0;
-	else if(t<x)
-		return x;
-	else 
-		return x-1;
+	long long int i,sum=0;
+	for(i=1;i<=n;i++)
+	{
+		sum+=i;
+	}
+	return sum;
 }
+
 int main()
 {
-	scanf("%lf", &x);
-	printf("%lld\n", f(x));
+	scanf("%d", &n);
+	printf("%lld\n", f(n));
 }

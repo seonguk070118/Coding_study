@@ -5,16 +5,16 @@
 #include <stdbool.h>
 int n, m;
 
-int max(int p,int q)
+int min(int p,int q)
 {
 	if(p>q)
-		return p;
-	else
 		return q;
+	else
+		return p;
 }
 
 int main()
 {
   scanf("%d%d", &n, &m);
-  printf("%d\n", max(n, m));
+  printf("%d\n", min(n, m));
 }

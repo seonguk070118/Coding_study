@@ -4,22 +4,14 @@
 #include<string.h>
 #include <stdbool.h>
 
-long long int n;
-int sqrt()
-{
-	long long int i;
-	for(i=0;i*i<n;i++);
-	
-	if(i*i==n)
-		return i;
-	else
-		return i-1;
-	
-}
+double x;
 
+double f(double t)
+{
+	return x-(long long int)t;
+}
 int main()
 {
-	scanf("%lld", &n);
-	printf("%d\n", sqrt(n));
-	return 0;
+  scanf("%lf", &x);
+  printf("%.14lf\n", f(x));
 }

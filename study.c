@@ -6,19 +6,20 @@
 
 int main()
 {
-	int i;
-	char a[100],b[100],c[100];
+	int i,sum1=0,sum2=0;
+	char a[102];
 	gets(a);
 	for(i=0;a[i]!=0;i++)
 	{
-		b[i]=a[i]+2;
-		printf("%c",b[i]);
+		if(a[i]=='c'||a[i]=='C')
+		{
+			sum1++;
+			if(a[i+1]=='c'||a[i+1]=='C')
+			{
+				sum2++;
+			}
+		}
 	}
-	printf("\n");
-	for(i=0;a[i]!=0;i++)
-	{
-		c[i]=(a[i]*7)%80+48;
-		printf("%c",c[i]);
-	}
+	printf("%d\n%d",sum1,sum2);
 	return 0;
 }

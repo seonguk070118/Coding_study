@@ -3,39 +3,27 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-int n, m, x;
 
-int max(int p, int q){ return p>=q?p:q;}
+int gcd(int p, int q){ if(p==0) return q; return gcd(q%p, p);}
 
-int min(int p, int q){ return p<q?p:q;}
-
-int mid(int a,int b,int c)
+long long int lcm(long long int a,long long int b)
 {
-	if(a>b&&a>c)
-	{
-		if(b>c)
-			return b;
-		else
-			return c;
-	}
-	else if(b>a&&b>c)
-	{
-		if(a>c)
-			return a;
-		else
-			return c;
-	}
-	else if(c>a&&c>b)
-	{
-		if(b>a)
-			return b;
-		else
-			return a;
-	}
+	long long int sum;
+    long long int r,x,y;
+    x=a;
+    y=b;
+  	while (y != 0) {
+    	r = x % y;
+    	x = y;
+    	y = r;
+  	}
+  	sum=(a*b)/x;
+  	return sum;
 }
 
 int main()
 {
-  scanf("%d%d%d", &n, &m, &x);
-  printf("%d\n", mid(n, m, x));
+  int a, b;
+  scanf("%d%d", &a, &b);
+  printf("%lld\n", lcm(a, b));
 }

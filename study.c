@@ -4,21 +4,13 @@
 #include<string.h>
 #include <stdbool.h>
 
-int a, n;
-
-long long int pow()
-{
-	long long int i,sum;
-	sum=1;
-	for(i=0;i<n;i++)
-	{
-		sum*=a;
-	}
-	return sum;
-}
-
 int main()
 {
-  scanf("%d%d", &a, &n);
-  printf("%lld\n", pow(a, n));
+	char a[100];
+	gets(a);
+	if(a[0]=='l'&&a[1]=='o'&&a[2]=='v'&&a[3]=='e'&&a[4]==0)
+	{
+		printf("I love you.");
+	}
+	return 0;
 }

@@ -6,11 +6,19 @@
 
 int main()
 {
-	char a[100];
+	int i;
+	char a[100],b[100],c[100];
 	gets(a);
-	if(a[0]=='l'&&a[1]=='o'&&a[2]=='v'&&a[3]=='e'&&a[4]==0)
+	for(i=0;a[i]!=0;i++)
 	{
-		printf("I love you.");
+		b[i]=a[i]+2;
+		printf("%c",b[i]);
+	}
+	printf("\n");
+	for(i=0;a[i]!=0;i++)
+	{
+		c[i]=(a[i]*7)%80+48;
+		printf("%c",c[i]);
 	}
 	return 0;
 }

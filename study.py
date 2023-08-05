@@ -1,2 +1,2 @@
 a,b=input().split()
-print(float(a)*float(b))
+print(a*int(b))

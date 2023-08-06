@@ -11,15 +11,10 @@ int main()
 	gets(a);
 	for(i=0;a[i]!=0;i++)
 	{
-		if(a[i]=='c'||a[i]=='C')
+		if(a[i]=='t')
 		{
-			sum1++;
-			if(a[i+1]=='c'||a[i+1]=='C')
-			{
-				sum2++;
-			}
+			printf("%d ",i+1);
 		}
 	}
-	printf("%d\n%d",sum1,sum2);
 	return 0;
 }

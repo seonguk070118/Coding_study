@@ -9,13 +9,11 @@ int main()
 	int i,sum=0;
 	char a[102];
 	gets(a);
-	for(i=0;a[i]!=0;i++)
+	if(a[0]=='I'&&a[1]=='O'&&a[2]=='I'&&a[3]==NULL)
 	{
-		if(a[i]=='l'&&a[i+1]=='o'&&a[i+2]=='v'&&a[i+3]=='e')
-		{
-			sum++;
-		}
+		printf("IOI is the International Olympiad in Informatics.");
+		return 0;
 	}
-	printf("%d",sum);
+	printf("I don't care.");
 	return 0;
 }

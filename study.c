@@ -6,15 +6,16 @@
 
 int main()
 {
-	int i,sum1=0,sum2=0;
+	int i,sum=0;
 	char a[102];
 	gets(a);
 	for(i=0;a[i]!=0;i++)
 	{
-		if(a[i]=='t')
+		if(a[i]=='l'&&a[i+1]=='o'&&a[i+2]=='v'&&a[i+3]=='e')
 		{
-			printf("%d ",i+1);
+			sum++;
 		}
 	}
+	printf("%d",sum);
 	return 0;
 }

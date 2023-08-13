@@ -7,12 +7,21 @@
 
 int main()
 {
-	int a,i,b,c;
+	int a,i,b,c,sum=0,d;
+	scanf("%d",&d);
 	scanf("%d",&a);
 	for(i=0;i<a;i++)
 	{
 		scanf("%d %d",&b,&c);
-		printf("%d\n",b+c);
+		sum+=b*c;
+	}
+	if(sum==d)
+	{
+		printf("Yes");
+	}
+	else
+	{
+		printf("No");
 	}
 	return 0;
 }

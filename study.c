@@ -3,31 +3,20 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-int n, k, d[1010];
-
-int upper_bound()
-{
-	
-	int i;
-	for(i=1;i<=n;i++)
-	{
-		if(k<d[i])
-		{
-			return i;
-		}
-	}
-	return n+1;
-}
 
 int main()
 {
-	int i;
-  scanf("%d", &n);
-
-  for(i=1; i<=n; i++)
-    scanf("%d", &d[i]);
-
-  scanf("%d", &k);
-
-  printf("%d\n", upper_bound(k));
+	int a,i,j=0;
+	scanf("%d",&a);
+	for(i=1;i<=a*a;i++)
+	{
+		printf("%d ",i);
+		j++;
+		if(j==a)
+		{
+			printf("\n");
+			j=0;
+		}
+	}
+	return 0;
 }

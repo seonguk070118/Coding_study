@@ -5,13 +5,17 @@
 #include <stdbool.h>
 int n,a,b,d[1010];
 
-int subsetsum(){
-	long long int i,sum=0;
+int maxi(){
+	int i,max=-2147483648;
 	for(i=a;i<=b;i++)
 	{
-		sum+=d[i];
+		if(d[i]>max)
+		{
+			max=i;
+			printf("%d\n",max);
+		}
 	}
-	return sum;
+	return max;
 }
 
 int main()
@@ -21,5 +25,5 @@ int main()
 	for(i=1; i<=n; i++)
 		scanf("%d", &d[i]);
 	scanf("%d%d", &a, &b);
-	printf("%lld\n", subsetsum(a, b));
+	printf("%d\n", maxi(a, b));
 }

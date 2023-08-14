@@ -5,16 +5,21 @@
 #include <stdbool.h>
 int n, k, d[1010];
 
-int findi(){
+int lower_bound()
+{
+	if(n==1&&d[0]<=k)
+	{
+		return 1;
+	}
 	int i;
 	for(i=1;i<=n;i++)
 	{
-		if(d[i]==k)
+		if(k<=d[i])
 		{
 			return i;
 		}
 	}
-	return -1;
+	return n+1;
 }
 
 int main()
@@ -27,5 +32,5 @@ int main()
 
   scanf("%d", &k);
 
-  printf("%d\n", findi(k));
+  printf("%d\n", lower_bound(k));
 }

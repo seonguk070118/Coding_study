@@ -3,27 +3,29 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-int n,a,b,d[1010];
+int n, k, d[1010];
 
-int maxi(){
-	int i,max=-2147483648;
-	for(i=a;i<=b;i++)
+int findi(){
+	int i;
+	for(i=1;i<=n;i++)
 	{
-		if(d[i]>max)
+		if(d[i]==k)
 		{
-			max=i;
-			printf("%d\n",max);
+			return i;
 		}
 	}
-	return max;
+	return -1;
 }
 
 int main()
 {
 	int i;
-	scanf("%d", &n);
-	for(i=1; i<=n; i++)
-		scanf("%d", &d[i]);
-	scanf("%d%d", &a, &b);
-	printf("%d\n", maxi(a, b));
+  scanf("%d", &n);
+
+  for(i=1; i<=n; i++)
+    scanf("%d", &d[i]);
+
+  scanf("%d", &k);
+
+  printf("%d\n", findi(k));
 }

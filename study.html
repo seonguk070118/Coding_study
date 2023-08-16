@@ -12,13 +12,13 @@
           알림창입니다.
           <button type="button" onclick="closing()" class="btn btn-primary">닫기</button>
         </div>
-        <button type="button" class="btn btn-success" onclick="opening">보이기</button>
+        <button type="button" class="btn btn-success" onclick="opening()">보이기</button>
         <script>
           function closing(){
-            document.getElementById("alert").display="none";
+            document.getElementById("alert").style.display="none";
           }
           function opening(){
-            document.getElementById("alert").display="block";
+            document.getElementById("alert").style.display="block";
           }
         </script>
     </body>

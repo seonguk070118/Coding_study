@@ -1,8 +1,7 @@
-while(1):
-    a,b=map(int,input().split())
-    if(a>b):
-        print("Yes")
-    elif(a==0&b==0):
-        break
-    elif(a<=b):
-        print("No")
+a=int(input())
+b=a
+for i in range(a):
+    for j in range(b):
+        print('*',end='')
+    print()
+    b=b-1

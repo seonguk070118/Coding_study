@@ -6,17 +6,8 @@
 
 int main()
 {
-	int a,i,j=0;
-	scanf("%d",&a);
-	for(i=1;i<=a*a;i++)
-	{
-		printf("%d ",i);
-		j++;
-		if(j==a)
-		{
-			printf("\n");
-			j=0;
-		}
-	}
+	char a[51];
+	scanf("%s",&a);
+	printf("%s??!",a);
 	return 0;
 }

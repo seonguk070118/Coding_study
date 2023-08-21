@@ -1,6 +1,10 @@
 a=int(input())
-sum=0
+a=a-2
+sum1=1
+sum2=1
+sum=1
 for i in range(a):
-    if((i+1)%2==0):
-        sum=sum+(i+1)
+    sum=sum1+sum2
+    sum1=sum2
+    sum2=sum
 print(sum)

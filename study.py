@@ -1,10 +1,11 @@
-a=int(input())
-a=a-2
-sum1=1
-sum2=1
-sum=1
-for i in range(a):
-    sum=sum1+sum2
-    sum1=sum2
-    sum2=sum
-print(sum)
+a=input()
+if a=='A':
+    print('best!!!')
+elif a=='B':
+    print('good!!')
+elif a=='C':
+    print('run!')
+elif a=='D':
+    print('slowly~')
+else:
+    print("what?")

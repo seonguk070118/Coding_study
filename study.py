@@ -1,5 +1,14 @@
-a,b,c,d=map(int,input().split())
-for i in range(d-1):
-    a*=b
-    a+=c
-print(a)
+import random
+count=0
+rn=random.randint(1,100)
+while 1:
+    a=int(input())
+    count+=1
+    if a==rn:
+        print(count)
+        break
+    else :
+        if a>rn:
+            print('down')
+        else :
+            print('up')

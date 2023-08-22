@@ -1,4 +1,3 @@
 a=int(input())
-while a:
-    a-=1
-    print(a)
+for i in range(a+1):
+    print(i)

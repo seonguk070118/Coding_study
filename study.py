@@ -1,8 +1,4 @@
 a,b,c=map(int,input().split())
-count=0
-for i in range(a):
-    for j in range(b):
-        for k in range(c):
-            print(i,j,k)
-            count+=1
-print(count)
+for i in range(c-1):
+    a+=b
+print(a)

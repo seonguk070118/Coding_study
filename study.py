@@ -1,7 +1,4 @@
-a=int(input())
-sum=0
-for i in range(1,a):
-    sum+=i
-    if sum>=a:
-        print(i)
-        break
+a,b=map(int,input().split())
+for i in range(1,a+1):
+    for j in range(1,b+1):
+        print(i,j)

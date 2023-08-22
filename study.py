@@ -1,17 +1,5 @@
-import random
-count=0
-rn=random.randint(1,100)
-while 1:
-    try :
-        a=int(input())
-        count+=1
-        if a==rn:
-            print(count)
-            break
-        else :
-            if a>rn:
-                print('down')
-            else :
-                print('up')
-    except :
-        print('숫자를 입력하세요')
+from gtts import gTTS
+
+text="안녕하세요 부소마입니다."
+tts=gTTS(text=text,lang='ko')
+tts.save(r"3. 텍스트를 음성으로 변환\hi.mp3")

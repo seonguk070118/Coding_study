@@ -2,34 +2,24 @@
 <html>
 <head>
 <title>JavaScript 연습</title>
-<script>
-	function show() {
-		let input = document.getElementById("input").value;
-    let msg=document.getElementById("msg").innerHTML=input+'님 안녕하세요! 반갑습니다!';
-	}
-</script>
-<style>
-  #msg{
-    border:2px solid royalblue;
-    margin-top: 20px;
-    padding:20px;
-    width:300px;
-    height: 100px;
-    box-sizing: border-box;
-    background-color: antiquewhite;
-  }
-</style>
 </head>
-	
 <body>
-<h1>JavaScript 연습</h1>
+<p>문자열 입력</p>
 <form name="form1">
 	<input type = "text" name="input" id="input">
-	<input type = "button" value="확인" onclick="show()">
-	<input type = "button" value="취소">
-  <div id="msg">
-  </div>
+  <br>
+  <p>결과</p>
+  <input type="text" name="output" id="output">
+  <br>
+  <br>
+  <input type = "button" value="문자열 추출(substring)" onclick="ss()">
+  <input type = "button" value="reset">
 </form>
-
+<script>
+	function ss() {
+		let input = document.getElementById("input").value;
+    document.getElementById("output").innerHTML=`${input.substring(0,4)}년 ${input.substring(4,6)}월 ${input.substring(6,8)}일 입니다.`
+	}
+</script>
 </body>
 </html>

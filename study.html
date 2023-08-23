@@ -1,26 +1,35 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset = "UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    </head>
-    <body>
-        <h4> </h4>
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-        </script>
-        <div class="alert alert-danger" role="alert" id="alert"> 
-          알림창입니다.
-          <button type="button" onclick="closing()" class="btn btn-primary">닫기</button>
-        </div>
-        <button type="button" class="btn btn-success" onclick="opening()">보이기</button>
-        <script>
-          function closing(){
-            document.getElementById("alert").style.display="none";
-          }
-          function opening(){
-            document.getElementById("alert").style.display="block";
-          }
-        </script>
-    </body>
-</html>
+<head>
+<title>JavaScript 연습</title>
+<script>
+	function show() {
+		let input = document.getElementById("input").value;
+    let msg=document.getElementById("msg").innerHTML=input+'님 안녕하세요! 반갑습니다!';
+	}
+</script>
+<style>
+  #msg{
+    border:2px solid royalblue;
+    margin-top: 20px;
+    padding:20px;
+    width:300px;
+    height: 100px;
+    box-sizing: border-box;
+    background-color: antiquewhite;
+  }
+</style>
+</head>
+	
+<body>
+<h1>JavaScript 연습</h1>
+<form name="form1">
+	<input type = "text" name="input" id="input">
+	<input type = "button" value="확인" onclick="show()">
+	<input type = "button" value="취소">
+  <div id="msg">
+  </div>
+</form>
+
 </body>
 </html>

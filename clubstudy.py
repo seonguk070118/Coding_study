@@ -28,4 +28,3 @@ soup = BeautifulSoup(sourcecode, "html.parser")
 
 href=soup.find("div", class_="list_content")
 print(href.find("a")["href"])
-

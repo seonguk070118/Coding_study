@@ -1,7 +1,10 @@
+d=[[0 for j in range(20)] for i in range(20)]
 n=int(input())
-a=[int(x) for x in input().split()]
-min=10000
-for i in range(0,n):
-    if(a[i]<min):
-        min=a[i]
-print(min)
+for i in range(n):
+    x,y=map(int,input().split())
+    d[x][y]=1
+
+for i in range(1,20):
+    for j in range(1,20):
+        print(d[i][j],end=' ')
+    print()

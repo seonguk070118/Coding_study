@@ -1,10 +1,21 @@
-d=[[0 for j in range(20)] for i in range(20)]
+a=[]
+for i in range(19):
+    a.append(list(map(int,input().split())))
+
 n=int(input())
 for i in range(n):
     x,y=map(int,input().split())
-    d[x][y]=1
+    for j in range(19):
+        if a[j][y-1]==0:
+            a[j][y-1]=1
+        else:
+            a[j][y-1]=0
+        if a[x-1][j]==0:
+            a[x-1][j]=1
+        else:
+            a[x-1][j]=0
 
-for i in range(1,20):
-    for j in range(1,20):
-        print(d[i][j],end=' ')
+for i in range(19):
+    for j in range(19):
+        print(a[i][j],end=' ')
     print()

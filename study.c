@@ -6,14 +6,14 @@
 
 int main()
 {
-	int list[]={5,3,8,1,2,7};
+	int list[]={6,5,4,3,2,1};
 	int key,i,j,size,temp;
 	
 	size=sizeof(list)/sizeof(int);
 	
-	for(i=0;i<size-1;i++)
+	for(i=size-1;i>0;i--)
 	{
-		for(j=0;j<size-1;j++)
+		for(j=0;j<i;j++)
 		{
 			if(list[j]>list[j+1])
 			{
@@ -24,6 +24,6 @@ int main()
 		}
 	}
 	for(i=0;i<size;i++)
-		printf("%d",list[i]);
+		printf("%d ",list[i]);
 	return 0;
 }

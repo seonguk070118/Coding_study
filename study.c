@@ -7,18 +7,23 @@
 int main()
 {
 	int list[]={5,3,8,1,2,7};
-	int key,i,j,size,temp
+	int key,i,j,size,temp;
 	
 	size=sizeof(list)/sizeof(int);
 	
-	for(i=1,i<size;i++)
+	for(i=0;i<size-1;i++)
 	{
-		key=list[i];
-		for(j=i-1;j>=0&&list[j]>key;j--)
+		for(j=0;j<size-1;j++)
 		{
-			list[j+1]=list[j];
+			if(list[j]>list[j+1])
+			{
+				temp=list[j+1];
+				list[j+1]=list[j];
+				list[j]=temp;
+			}
 		}
-		list[j+1]=key;
 	}
+	for(i=0;i<size;i++)
+		printf("%d",list[i]);
 	return 0;
 }

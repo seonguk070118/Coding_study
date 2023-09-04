@@ -1,2 +1,2 @@
-a=float(input())
-print(format(a,".2f"))
+a=int(input())
+print(a<<1)

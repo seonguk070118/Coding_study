@@ -1,3 +1,2 @@
-a,b,c=map(int,input().split())
-print(a+b+c,end=' ')
-print(format((a+b+c)/3,".2f"))
+a,b=map(int,input().split())
+print(a<b)

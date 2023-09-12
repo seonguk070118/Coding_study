@@ -1,2 +1,3 @@
-a={'A':'best!!!','B':'good!!','C':'run!','D':'slowly~'}
-print(a.get(input(),'what?'))
+arr=['winter','winter','spring','spring','spring','summer','summer','summer','fall','fall','fall','winter']
+a=int(input())
+print(arr[a-1])

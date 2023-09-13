@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .test-class{
-      background : yellow;
-    }
-  </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<style>
+.acc {
+    background-color: gray;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active {
+    background-color: lightblue; 
+}
+
+.content{
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+</style>
 </head>
 <body>
-  <div id="test" class="a">
-    섹션의 내용입니다.
-  </div>
-  <button id="add">클래스 추가</button>
-  <button id="remove">클래스 제거</button>
-  <button id="toggle">클래스 토글</button>
-  <script>
-    const el=document.getElementById('test');
-    var btn1 = document.getElementById('add');
-    var btn2 = document.getElementById('remove');
-    var btn3 = document.getElementById('toggle');
-    function toggle(){
-      el.classList.toggle('test-class');
-    }
-    function add(){
-      el.classList.add('test-class');
-    }
-    function remove(){
-      el.classList.remove('test-class');
-    }
-    btn1.addEventListener('click', add);
-    btn2.addEventListener('click', remove);
-    btn3.addEventListener('click', toggle);
-  </script>
+<button class="acc" id="toggle" >Section 1</button>
+<div class="content">
+    <p>섹션1의 내용입니다....</p>
+</div>
+	<script>
+        let el=document.querySelectorAll('.content');
+        let ele=document.getElementsByClassName('acc');
+        var btn3 = document.getElementById('toggle');
+        function toggle(){
+            el[0].classList.toggle('content');
+            ele[0].classList.toggle('active');
+        }
+        btn3.addEventListener('click', toggle);
+	</script>
 </body>
 </html>

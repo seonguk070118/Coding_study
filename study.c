@@ -3,35 +3,53 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
+int sorted[1000];
 
-void insertsort(int list[],int first,int last,int gap)
+void merge(int list[],int left,int mid, int right)
 {
-	int i,j,key;
-	for(i=first+gap;i<=last;i=i+gap)
+	int i,j,k,l;
+	i=left;
+	j=mid+1;
+	i=left;
+	
+	while(i<=mid&&j<=right){
+		if(list[i]<=list[j])
+			sorted[k++]=list[i++];
+		else
+			sorted[k++]=list[j++];
+	}
+	if(i>mid)
 	{
-		key=list[i];
-		for(j=i-gap;j>=first&&key<list[j];j=j-gap)
-		{
-			list[j+gap]=list[j];
-		}
-		list[j+gap]=key;
+		for(l=j;l<=right;l++)
+			sorted[k++]=list[l];
+	}
+	else
+	{
+		for(l=i;l<=mid;l++)
+			sorted[k++]=list[l];
+	}
+	for(l=left;l<=right;l++)
+		list[l]=sorted[l];
+}
+
+void merge_sort(int list[],int left,int right)
+{
+	int mid;
+	if(left<right)
+	{
+		mid=(left+right)/2;
+		merge_sort(list,left,mid);
+		merge_sort(list,mid+1,right);
+		merge(list,left,mid,right);
 	}
 }
 
 int main()
 {
-	int list[]={10,8,6,20,4,3,22,1,0,15,16};
-	int n,i,j,gap;
-	n=sizeof(list)/sizeof(int);
-	for(gap=n/2;gap>0;gap=gap/2)
-	{
-		if(gap%2==0) gap++;
-		for(i=0;i<gap;i++)
-		{
-			insertsort(list,i,n-1,gap);
-		}
-	}
-	for(i=0;i<11;i++)
+	int list[]={27,10,12,20,25,13,15,22};
+	int n=sizeof(list)/sizeof(int),i;
+	merge_sort(list,0,n);
+	for(i=0;i<n;i++)
 	{
 		printf("%d ",list[i]);
 	}

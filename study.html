@@ -1,44 +1,39 @@
-<html>
-    <head>
-        <meta charset = "UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    </head>
-    <body>
-        <h4> </h4>
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-        </script>
-        <form name="frm">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">입력</label>
-            <input type="text" class="form-control" onkeyup="getString()" id="exampleInputEmail1" name="string1">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">결과</label>
-            <input type="text" class="form-control" id="result" name="result" readonly>
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-          
-          <button type = "button" class="btn btn-primary"  onclick="subString()">문자열 변환</button>
-          <button type = "button" class="btn btn-primary"  onclick="frm.result.value=frm.string1.value.toUpperCase()">대문자 변환</button>
-          <button type = "button" class="btn btn-primary"  onclick="frm.result.value=frm.string1.value.length">문자열 길이</button>
-          <button type = "button" class="btn btn-primary"  onclick="frm.result.value=frm.string1.value.trim()">문자열 공백제거</button>
-          <button type = "button" class="btn btn-primary"  onclick="frm.result.value=frm.string1.value.concat(str+'123')">문자열 합치기</button>
-          <button type="submit" class="btn btn-primary">reset</button>
-        </form>
-        <script>
-          let str;
-          function getString(){
-            console.log(frm.string1.value);
-            str=frm.string1.value;
-          }
-          function subString(){
-            frm.result.value=`${str.substring(0,4)}년 ${str.substring(4,6)}월 ${str.substring(6,8)}일 입니다.`;
-          }
-        </script>
-    </body>
-</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .test-class{
+      background : yellow;
+    }
+  </style>
+</head>
+<body>
+  <div id="test" class="a">
+    섹션의 내용입니다.
+  </div>
+  <button id="add">클래스 추가</button>
+  <button id="remove">클래스 제거</button>
+  <button id="toggle">클래스 토글</button>
+  <script>
+    const el=document.getElementById('test');
+    var btn1 = document.getElementById('add');
+    var btn2 = document.getElementById('remove');
+    var btn3 = document.getElementById('toggle');
+    function toggle(){
+      el.classList.toggle('test-class');
+    }
+    function add(){
+      el.classList.add('test-class');
+    }
+    function remove(){
+      el.classList.remove('test-class');
+    }
+    btn1.addEventListener('click', add);
+    btn2.addEventListener('click', remove);
+    btn3.addEventListener('click', toggle);
+  </script>
 </body>
 </html>

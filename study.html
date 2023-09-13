@@ -32,19 +32,43 @@
 </style>
 </head>
 <body>
-<button class="acc" id="toggle" >Section 1</button>
+<button class="acc" onclick="show(0)">Section 1</button>
 <div class="content">
     <p>섹션1의 내용입니다....</p>
 </div>
+<button class="acc" onclick="show(1)">Section 2</button>
+<div class="content">
+    <p>섹션2의 내용입니다....</p>
+</div>
+<button class="acc" onclick="show(2)">Section 3</button>
+<div class="content">
+    <p>섹션3의 내용입니다....</p>
+</div>
 	<script>
-        let el=document.querySelectorAll('.content');
-        let ele=document.getElementsByClassName('acc');
-        var btn3 = document.getElementById('toggle');
-        function toggle(){
-            el[0].classList.toggle('content');
-            ele[0].classList.toggle('active');
+        let cont=document.getElementsByClassName("content");
+        //let con2=document.querySelectorAll=(".content");
+        //let acc2=document.querySelectorAll(".acc");
+        let acc=document.getElementsByClassName("acc");
+        function show(i){
+            acc[i].classList.toggle("active");
+            if(cont[i].style.display == "block"){
+                cont[i].style.display="none";
+            }
+            else{
+                cont[i].style.display="block";
+            }
         }
-        btn3.addEventListener('click', toggle);
+
+        function show2(acc){
+            let pan=acc.nextElementSibling;
+            pan.classList.toggle("active");
+            if(pan.style.display == "block"){
+                pan.style.display="none";
+            }
+            else{
+                pan.style.display="block";
+            }
+        }
 	</script>
 </body>
 </html>

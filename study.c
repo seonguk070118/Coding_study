@@ -4,8 +4,6 @@
 #include<string.h>
 #include <stdbool.h>
 
-#define MAX_SIZE 10
-#define SWAP(x,y,t)((t)=(x),(x)=(y),(y)=(t))
 
 int list[]={5,3,8,4,9,1,6,2,7,10,48,26};
 int n=sizeof(list)/sizeof(int);
@@ -23,9 +21,16 @@ int partition(int list[],int left,int right)
 		do{
 			high--;
 		}while(list[high]>pivot);
-		if(low<high) SWAP(list[low],list[high],temp);
+		if(low<high)
+		{
+			temp=list[low];
+			list[low]=list[high];
+			list[high]=temp;
+		}
 	}while(low<high);
-	SWAP(list[left],list[high],temp);
+	temp=list[left];
+	list[left]=list[high];
+	list[high]=temp;
 	return high;
 }
 

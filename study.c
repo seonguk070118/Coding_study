@@ -3,52 +3,46 @@
 #include<limits.h>
 #include<string.h>
 #include <stdbool.h>
-int sorted[1000];
 
-void merge(int list[],int left,int mid, int right)
+#define MAX_SIZE 10
+#define SWAP(x,y,t)((t)=(x),(x)=(y),(y)=(t))
+
+int list[]={5,3,8,4,9,1,6,2,7,10,48,26};
+int n=sizeof(list)/sizeof(int);
+
+int partition(int list[],int left,int right)
 {
-	int i,j,k,l;
-	i=left;
-	j=mid+1;
-	k=left;
-	
-	while(i<=mid&&j<=right){
-		if(list[i]<=list[j])
-			sorted[k++]=list[i++];
-		else
-			sorted[k++]=list[j++];
-	}
-	if(i>mid)
-	{
-		for(l=j;l<=right;l++)
-			sorted[k++]=list[l];
-	}
-	else
-	{
-		for(l=i;l<=mid;l++)
-			sorted[k++]=list[l];
-	}
-	for(l=left;l<=right;l++)
-		list[l]=sorted[l];
+	int pivot,low,high,temp;
+	low=left;
+	high=right+1;
+	pivot=list[left];
+	do{
+		do{
+			low++;
+		}while(list[low]<pivot);
+		do{
+			high--;
+		}while(list[high]>pivot);
+		if(low<high) SWAP(list[low],list[high],temp);
+	}while(low<high);
+	SWAP(list[left],list[high],temp);
+	return high;
 }
 
-void merge_sort(int list[],int left,int right)
+void quicksort(int list[],int left,int right)
 {
-	int mid;
 	if(left<right)
 	{
-		mid=(left+right)/2;
-		merge_sort(list,left,mid);
-		merge_sort(list,mid+1,right);
-		merge(list,left,mid,right);
+		int q=partition(list,left,right);
+		quicksort(list,left,q-1);
+		quicksort(list,q+1,right);
 	}
 }
 
 int main()
 {
-	int list[]={27,10,12,20,25,13,15,22};
-	int n=sizeof(list)/sizeof(int),i;
-	merge_sort(list,0,n);
+	int i;
+	quicksort(list,0,n-1);
 	for(i=0;i<n;i++)
 	{
 		printf("%d ",list[i]);

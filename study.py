@@ -1,6 +1,8 @@
 n=int(input())
 a=list(map(int,input().split()))
-for i in range(n):
-    for j in range(i,n+i):
-        print(a[j%n],end=' ')
+for j in range(n):
+    for i in range(n):
+        print(a[i],end=' ')
     print()
+    b=a.pop(0)
+    a.append(b)

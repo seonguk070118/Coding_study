@@ -1,6 +1,6 @@
-def f(n):
-    if n!=0:
-        f(n-1)
-        print('*'*n)
 n=int(input())
-f(n)
+a=list(map(int,input().split()))
+for i in range(n):
+    for j in range(i,n+i):
+        print(a[j%n],end=' ')
+    print()

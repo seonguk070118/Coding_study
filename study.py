@@ -1,9 +1,11 @@
 n=int(input())
-s=0
-while(s==0 or s>=10):
-    s=0
-    while(n>0):
-        s+=int(n%10)
-        n=n/10
-    n=s
-print(s)
+a=list(map(int,input().split()))
+b=list(a)
+c=list(range(n))
+for i in range(n):
+    c[i]=max(a)
+    a.remove(c[i])
+
+for i in b:
+    print(i,end=' ')
+    print(c.index(i)+1)

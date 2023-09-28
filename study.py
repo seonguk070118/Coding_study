@@ -1,2 +1,2 @@
 a,b=map(int,input().split())
-print(bool(a)==bool(b))
+print(not(bool(a)) and not(bool(b)))

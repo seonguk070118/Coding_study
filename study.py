@@ -1,11 +1,11 @@
-a=int(input())
-if a<0:
-    if a%2==0:
-        print('A')
-    else:
+n=int(input())
+if n>=90:
+    print('A')
+else:
+    if n>=70:
         print('B')
-elif a>0:
-    if a%2==0:
-        print('C')
     else:
-        print('D')
+        if n>=40 :
+            print('C')
+        else:
+            print('D')

@@ -60,21 +60,21 @@
         <p>공부가 끝난 것은 클릭해서 삭제할 수 있습니다.</p>
         <form name="frm" action="">
             <input type="text" id="subject" autofocus name="inputName">
-            <button onclick="newRegister()">추가</button>
+            <button type="button" onclick="newRegister()">추가</button>
         </form>
         <hr>
-        <ul id="itemList"> </ul>
+        <ul id="newItem"> </ul>
     </div>
 
     <script>
         function newRegister() {
-            let itemList = document.createElement("li");
+            let newItem = document.createElement("li"); // itemList을 newItem으로 변경
             let subject = document.getElementById("subject");
             let newText = document.createTextNode(subject.value);
-            itemList.appendChild(newText);
+            newItem.appendChild(newText); // itemList을 newItem으로 변경
 
-            let itemListContainer = document.querySelector("#itemList");
-            itemListContainer.appendChild(itemList);
+            let itemList = document.querySelector("#newItem"); // itemListContainer을 itemList으로 변경
+            itemList.appendChild(newItem); // itemList을 newItem으로 변경
 
             let liItems = document.querySelectorAll("li");
             for (let i = 0; i < liItems.length; i++) {

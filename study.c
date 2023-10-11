@@ -6,17 +6,16 @@
 
 int main()
 {
-    int n,i=0,sum=1;
+    int n,i,a[101],max=0,min=1000;
     scanf("%d",&n);
-    printf("1");
-    for(i=2;i<n;i++)
+    for(i=0;i<n;i++)
     {
-    	if(n%i==0)
-    	{
-    		sum+=i;
-    		printf(" + %d",i);
-		}
+    	scanf("%d",&a[i]);
+    	if(a[i]>max)
+    		max=a[i];
+    	if(a[i]<min)
+    		min=a[i];
 	}
-	printf(" = %d",sum);
+	printf("%d",max-min);
     return 0;
 }

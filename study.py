@@ -1,3 +1,4 @@
-n=int(input())
-for i in range(n+1):
-    print(i)
+n='s'
+while n!='q':
+    n=str(input())
+    print(n)

@@ -3,35 +3,32 @@ package mypack;
 import java.util.Arrays;
 
 class A{
-	int a,b,c,d;
-	A(){
-		this(3);
-		System.out.println("A持失切 1");
-	}
-	A(int a){
-		System.out.println("A持失切 2");
-	}
+	
 }
 
 class B extends A{
-	B(){
-		this(3);
-		System.out.println("B持失切 1");
-	}
-	B(int a){
-		System.out.println("B持失切 2");
-	}
+	
 }
 
+class C extends A{
+	
+}
+
+class D extends B{
+	
+}
 public class study {
 	public static void main(String[] ar) {
-		A aa1 = new A();
-		System.out.println();
-		A aa2 = new A(3);
-		System.out.println();
+		A aa = new A();
+		System.out.println(aa instanceof A);
+		System.out.println(aa instanceof B);
+		System.out.println(aa instanceof C);
+		System.out.println(aa instanceof D);
 		
-		B bb1 = new B();
-		System.out.println();
-		B bb2 = new B(3);
+		A ad =new D();
+		System.out.println(ad instanceof A);
+		System.out.println(ad instanceof B);
+		System.out.println(ad instanceof C);
+		System.out.println(ad instanceof D);
 	}
 }

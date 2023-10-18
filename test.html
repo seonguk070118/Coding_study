@@ -1,76 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: Arial;
-        }
         .tab {
-            overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-        }
-        .tab .active{
-            background-color: lightblue;
-        }
-        .tab button {
-            background-color: inherit;
+            background-color: #555;
+            color: white;
             float: left;
             border: none;
             outline: none;
             cursor: pointer;
             padding: 14px 16px;
-            transition: 0.3s;
             font-size: 17px;
+            width: 25%;
         }
-        .tabcontent {
-            display: none; /* 모든 탭 내용을 초기에 숨김 */
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
+        
+        .tab:hover {
+            background-color: #777;
         }
-        #test {
-            border: 2px solid #559;
+        
+        .content {
+            color: white;
+            display: none;
+            padding: 50px;
+            text-align: center;
+        }
+        
+        #About {
+            background-color: tomato;
+        }
+        
+        #Products {
+            background-color: darkolivegreen;
+        }
+        
+        #Technology {
+            background-color: dodgerblue;
+        }
+        
+        #Downloads {
+            background-color: orange;
         }
     </style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
+
 <body>
-    <h2>Tabs</h2>
-    <p>Click on the buttons inside the tabbed menu:</p>
-    <div class="tab">
-        <button class="tablinks" onclick="openCity(this, 'London')">London</button>
-        <button class="tablinks" onclick="openCity(this, 'Paris')">Paris</button>
-        <button class="tablinks" onclick="openCity(this, 'Tokyo')">Tokyo</button>
+    <div id="About" class="content">
+        <h1>About</h1>
+        <p>Custom Software Development Company</p>
     </div>
-    <div id="London" class="tabcontent">
-        <h3>London</h3>
-        <p>London is the capital city of England.</p>
+    <div id="Products" class="content">
+        <h1>Products</h1>
+        <p>Building tailored software to address critical needs of global enterprises.</p>
     </div>
-    <div id="Paris" class="tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p>
+    <div id="Technology" class="content">
+        <h1>Technology</h1>
+        <p>Machine Learning, Artificial Intelligent, Cloud Platform.</p>
     </div>
-    <div id="Tokyo" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
+    <div id="Downloads" class="content">
+        <h1>Downloads</h1>
+        <p>You can download a free 10 days trial.</p>
     </div>
-    
+    <div>
+        <button id="default" class="tab" onclick="openMenu('About', this, 'tomato')">About</button>
+        <button class="tab" onclick="openMenu('Products', this, 'darkolivegreen')">Products</button>
+        <button class="tab" onclick="openMenu('Technology', this, 'dodgerblue')">Technology</button>
+        <button class="tab" onclick="openMenu('Downloads', this, 'orange')">Downloads</button>
+    </div>
     <script>
-        function openCity(tab, cityName) {
-            let i, tabcontent, tablinks;
-            tabcontent=document.querySelectorAll(".tabcontent");
-            for(i=0;i<tabcontent.length;i++)
-            {
-                tabcontent[i].style.display="none";
-            }
-            tablinks=document.querySelectorAll(".tablinks");
-            for(i=0;i<tablinks.length;i++)
-            {
-                tablinks[i].classList.remove("active");
-            }
-            document.getElementById(cityName).style.display="block";
-            tab.classList.add('active');
+        let contents = document.querySelectorAll(".content");
+        let tab = document.querySelectorAll(".tab");
+        let defbtn = document.getElementById("default");
+        defbtn.style.background = "tomato";
+        document.getElementById("About").style.display = "block";
+
+        function openMenu(title, btn, cl) {
+            let i;
+            for (i = 0; i < contents.length; i++)
+                contents[i].style.display = "none";
+            document.getElementById(title).style.display = "block";
+            for (i = 0; i < tab.length; i++)
+                tab[i].style.background = "#555";
+            btn.style.background = cl;
         }
     </script>
 </body>
+
 </html>

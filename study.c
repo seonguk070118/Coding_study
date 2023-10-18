@@ -24,7 +24,7 @@ int main()
         else
         {
             k++;
-            index=(hash(key)+k)%n;
+            index=(hash(key)+(k*k))%n;
             if(t==index) 
 			{
 				printf("Å½»ö ½ÇÆÐ"); 

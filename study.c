@@ -16,20 +16,15 @@ int main()
     int t=index;
     while(1)
     {
-        if(list[index]==key)
+        if(list[index]==0)
         {
-            //list[index]=key;
+            list[index]=key;
             break;
         }
         else
         {
             k++;
-            index=(hash(key)+(k*k))%n;
-            if(t==index) 
-			{
-				printf("Å½»ö ½ÇÆĞ"); 
-				break;
-			}
+            index=(hash(key)+k*k)%n;
         }
     }
     printf("%d",index);

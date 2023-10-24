@@ -1,4 +1,3 @@
-n = int(input(), 16)
-for i in range(1, 16):
-    result = n * i
-    print(f'{n:X}*{i:X}={result:X}')
+a,b,c,d=map(int,input().split())
+print(format(a*b*c*d/8/1024/1024, ".1f"),end='')
+print(" MB")

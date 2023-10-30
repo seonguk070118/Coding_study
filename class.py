@@ -1,33 +1,51 @@
-#1번문제
-n=int(input())
-def prnt(n):
-    if(n<1):
-        return
-    print(n,end=' ')
-    prnt(n-1)
-    return
-prnt(n)
-
-
-#2번 문제
-n=int(input())
-l=list(map(int,input().split()))
-def Sum(n):
-    if(n<0):
-        return 0
-    s=l[n]+Sum(n-1)
-    return s
-print(Sum(n-1))
-
-
-#3번문제
-def M(n):
-    if(n<0):
-        return 0
-    if(l[n]>M(n-1)):
-        return l[n]
+# 스텍 ADT 지우지 말고 저장해놓기
+stack_size=5
+list=[None]*stack_size
+top=-1
+def isEmpty():
+    if top==-1:
+        return 1
     else:
-        return M(n-1)
-n=int(input())
-l=list(map(int,input().split()))
-print(M(n-1))
+        return 0
+
+def isFull():
+    if top==stack_size-1:
+        return 1
+    else:
+        return 0
+
+def push(i):
+    global top
+    if not isFull():
+        top+=1
+        list[top]=i
+        print(list)
+        return
+    else:
+        print('스텍가득참')
+        return
+    
+def pop():
+    global top
+    if not isEmpty():
+        item=list[top]
+        top-=1
+        print(item)
+        return
+    else:
+        print('스텍 비어있음')
+        return
+
+def peek():
+    if not isEmpty():
+        print(list[top])
+        return
+    else:
+        print("스텍 빔")
+        return
+
+push(1)
+pop()
+push(2)
+push(3)
+peek()

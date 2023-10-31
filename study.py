@@ -1,9 +1,4 @@
-n=input()
-s=n[::-1]
-su=int(n)+int(s)
-s=str(su)
-s=s[::-1]
-if str(su)==s:
-    print('YES')
-else:
-    print("NO")
+n=list(map(int,input().split()))
+for i in range(3):
+    print(min(n),end=' ')
+    n.remove(min(n))

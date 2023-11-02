@@ -5,18 +5,20 @@
 #include <stdbool.h>
 
 int main(){
-	int a[101],n,max=0,count=0,i;
+	int a[101],n,i;
 	scanf("%d",&n);
 	for(i=0;i<n;i++){
-		scanf("%d",&a[i]);
+		scanf("%d ",&a[i]);
 	}
-	max=a[n-1];
-	for(i=n-2;i>=0;i--){
-		if(a[i]>max){
-			count++;
-			max=a[i];
+	for(i=0;i<n;i++){
+		if(a[i]<0){
+			printf("%d ",a[i]);
 		}
 	}
-	printf("%d",count);
+	for(i=0;i<n;i++){
+		if(a[i]>0){
+			printf("%d ",a[i]);
+		}
+	}
 	return 0;
 }

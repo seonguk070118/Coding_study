@@ -1,6 +1,5 @@
-n=input()
-print(int(n[::-1]))
-sum=0
-for i in str(n):
-    sum=sum+int(i)
-print(sum)
+a,b,c=map(int,input().split())
+d=1
+while d%a!=0 or d%b!=0 or d%c!=0:
+    d+=1
+print(d)

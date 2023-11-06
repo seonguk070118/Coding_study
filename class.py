@@ -49,3 +49,47 @@ pop()
 push(2)
 push(3)
 peek()
+
+# 원형큐 ADT
+class CircularQueue:
+    def __init__(self,capacity=5):
+        self.capacity=capacity
+        self.list=[None]*capacity
+        self.front=0
+        self.rear=0
+    def isEmpty(self):
+        if self.front==self.rear:
+            return 1
+        else:
+            return 0
+    def isFull(self):
+        if (self.rear+1)%self.capacity==self.front:
+            return 1
+        else:
+            return 0
+    def enqueue(self,item):
+        if self.isFull(): print("포화상태")
+        else:
+            self.rear=(self.rear+1)%self.capacity
+            self.list[self.rear]=item
+    def dequeue(self):
+        if self.isEmpty(): print("공백상태")
+        else:
+            self.front=(self.front+1)%self.capacity
+    def printqueue(self):
+        if self.isEmpty(): print("공백상태")
+        i=self.front
+        while i != self.rear:
+            i=(i+1)%self.capacity
+            print(self.list[i],end=' ')
+            if i==self.rear: break
+        print()
+
+a = CircularQueue()
+a.enqueue(30)
+a.enqueue(50)
+a.enqueue(40)
+a.printqueue()
+a.dequeue()
+a.dequeue()
+a.printqueue()

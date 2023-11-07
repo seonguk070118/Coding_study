@@ -1,8 +1,4 @@
-def aa(n):
-    if n<=1:
-        return 1
-    else:
-        return n*aa(n-1)
-
-c,b=map(int,input().split())
-print(aa(c)//(aa(b)*aa(c-b)))
+a,b=map(int,input().split())
+c,d=map(int,input().split())
+e,f=map(int,input().split())
+print(max(a*b,c*d,e*f))

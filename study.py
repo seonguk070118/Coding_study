@@ -1,4 +1,6 @@
-a,b=map(int,input().split())
-c,d=map(int,input().split())
-e,f=map(int,input().split())
-print(max(a*b,c*d,e*f))
+n=int(input())
+cnt=0
+for i in range(1,n):
+    if n%i==0:
+        cnt=cnt+1
+print(cnt)

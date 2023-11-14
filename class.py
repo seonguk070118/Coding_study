@@ -93,3 +93,67 @@ a.printqueue()
 a.dequeue()
 a.dequeue()
 a.printqueue()
+
+# 덱ADT
+class Deque:
+    def __init__(self,capacity=5):
+        self.capacity=capacity
+        self.list=[None]*capacity
+        self.front=-1
+        self.rear=5
+    def isEmpty(self):
+        if self.front==self.rear:
+            return 1
+        else:
+            return 0
+    def isFull(self):
+        for i in range(5):
+            if i==0:
+                return 0
+        return 1
+    def printqueue(self):
+        if self.isEmpty(): print("공백상태")
+        print(self.list)
+    def addFront(self,item):
+        if self.isFull(): print('포화')
+        else:
+            self.front=self.front+1
+            self.list[self.front]=item
+    def addRear(self,item):
+        if self.isFull(): print('포화')
+        else:
+            self.rear=self.rear-1
+            self.list[self.rear]=item
+    def deleteFront(self):
+        if self.isEmpty(): print('공백')
+        else:
+            t=list[self.front]
+            self.front=self.front-1
+        return t
+    def deleteRear(self):
+        if self.isEmpty(): print('공백')
+        else:
+            t=list[self.rear]
+            self.rear=self.rear+1
+        return t
+    def getFront(self):
+        if self.isEmpty(): print('공백')
+        else:
+            return self.list[self.front]
+    def getRear(self):
+        if self.isEmpty(): print('공백')
+        else:
+            return self.list[self.rear]
+
+a = Deque()
+a.addFront(10)
+a.addFront(20)
+a.addRear(30)
+a.printqueue()
+print(a.getFront())
+print(a.getRear())
+a.deleteFront()
+a.deleteRear()
+a.addFront(200)
+a.addRear(300)
+a.printqueue()

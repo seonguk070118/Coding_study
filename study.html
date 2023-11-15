@@ -38,14 +38,27 @@
     </div>
     <script>
         var total = parseInt(frm.size.value);
+        const checkboxes = document.querySelectorAll('.checkbx');
         frm.total.value = total;
         function price() {
-            var total = parseInt(frm.size.value);
-            const checkboxes = document.querySelectorAll('.checkbx');
             for (let i = 0; i < checkboxes.length; i++) {
                 if (checkboxes[i].checked) {
                     total += parseInt(checkboxes[i].value);
                 }
+            }
+            frm.total.value = total;
+
+        }
+        
+        for (i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].addEventListener("click", calc);
+        }
+        function calc() {
+            if (this.checked) {
+                total += parseInt(this.value);
+            }
+            else {
+                total -= parseInt(this.value);
             }
             frm.total.value = total;
         }

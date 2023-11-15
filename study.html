@@ -3,181 +3,54 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>연습문제 2</title>
-    <style>
-        #container {
-            width: 600px;
-            margin: 10px auto;
-        }
-
-        fieldset {
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        ul li {
-            margin: 10px;
-        }
-
-        /* label 텍스트 스타일 */
-        li label {
-            width: 120px;
-            line-height: 36px;
-            float: left;
-            font-weight: bold;
-        }
-
-        /* 텍스트 필드 스타일 */
-        input[type="text"],
-        input[type="password"],
-        input[type="email"] {
-            width: 300px;
-            height: 30px;
-        }
-
-        /* 버튼 스타일 */
-        #buttons {
-            width: 400px;
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        #buttons input {
-            width: 150px;
-            height: 50px;
-            font-size: 20px;
-        }
-
-        #buttons input:hover {
-            background-color: rgb(27, 134, 221);
-            color: #fff;
-            border-color: #fff;
-        }
-
-        /* 드롭다운 메뉴 스타일 */
-        select {
-            width: 100px;
-            height: 30px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>연습문제 1</title>
+    <link rel="stylesheet" href="">
 </head>
 
 <body>
     <div id="container">
-        <h1>회원가입을 환영합니다.</h1>
-        <form name="frm" > 
+        <h1>피자 주문</h1>
+        <form name="frm">
             <fieldset>
-                <legend>사용자 정보</legend>
-                <ul>
-                    <li>
-                        <label for="uid">아이디</label>
-                        <input type="text" id="uid" name="uid" required placeholder="4자 ~ 10자 사이, 공백없이">
-                    </li>
-                    <li>
-                        <label for="uemail">이메일</label>
-                        <input type="email" id="uemail" required name="uemail">
-                    </li>
-                    <li>
-                        <label for="pwd1">비밀번호</label>
-                        <input type="password" id="pwd1" required placeholder="문자와 숫자, 특수 기호 포함">
-                    </li>
-                    <li>
-                        <label for="pwd2">비밀번호확인</label>
-                        <input type="password" id="pwd2" required>
-                    </li>
-                    <li>
-                        <label for="path">가입 경로</label>
-                        <select id="path" name="path">
-                            <option value="blog">블로그</option>
-                            <option value="search">검색</option>
-                            <option value="sns">SNS</option>
-                            <option value="etc">기타</option>
-                        </select>
-                    </li>
-                    <li>
-                        <label for="class">회원등급</label>
-                        <select id="class"name="class"onchange="calculating()">
-                            <option value="100">초급</option>
-                            <option value="200">중급</option>
-                            <option value="300">고급</option>
-                        </select>
-                    </li>
-                    <li>
-                        <label for="tuition">연회비</label>
-                        <input type="text" id="tuition" name="tuition">
-                    </li>
-                    <li>
-                        <label for="memo">메모</label>
-                        <textarea cols="40" rows="4" placeholder="남길 말씀이 있다면 여기에"></textarea>
-                    </li>
-                </ul>
+                <legend>사이즈</legend>
+                <select name="size" onchange="price()">
+                    <option value="18000">medium - 18000원</option>
+                    <option value="24000">Large - 24000원</option>
+                </select>
+
             </fieldset>
             <fieldset>
-                <legend>이벤트와 새로운 소식</legend>
-                <input type="radio"name=mailing id="mailing_y">
-                <label type="mailing_y">메일수신</label>
-                <input type="radio"name=mailing id="mailing_n" checked>
-                <label type="mailing_n">메일수신 안함</label>
+                <legend>추가 주문 </legend>
+                <label><input type="checkbox" name="pickle" class="checkbx" value=800>피클(800원)</label>
+                <label><input type="checkbox" name="chilly" class="checkbx" value=300>칠리 소스(300원)</label>
+                <label><input type="checkbox" name="deeping" class="checkbx" value=200>디핑 소스(200원)</label>
+                <label><input type="checkbox" name="stick" class="checkbx" value=4800>치즈스틱(4개, 4800원)</label>
+                <label><input type="checkbox" name="salad" class="checkbx" value=2400>콘 샐러드(2400원)</label>
             </fieldset>
-            <div id="buttons">
-                <input type="button" value="가입하기" onclick="checking()">
-                <input type="reset" value="취소">
-            </div>
-        </form>
-        <form name="frm2" id="conform">
             <fieldset>
-                <legend>입력 회원 정보</legend>
-                <ul>
-                    <li>
-                        <label for="uid2">아이디</label>
-                        <input type="text" id="uid2" placeholder="4자 ~ 10자 사이, 공백없이" name="uid2">
-                    </li>
-                    <li>
-                        <label for="uemail2">이메일</label>
-                        <input type="email" id="uemail2" name="uemail2">
-                    </li>
-                    <li>
-                        <label for="path">가입 경로</label>
-                        <select id="path"name="path2">
-                            <option value="blog">블로그</option>
-                            <option value="search">검색</option>
-                            <option value="sns">SNS</option>
-                            <option value="etc">기타</option>
-                        </select>
-                    </li>
-                </ul>
+                <legend>합계</legend>
+                <input type="button" onclick="price()" value="계산하기">
+                <input type="text" id="total" name="total" class="price" value="" readonly>
             </fieldset>
         </form>
     </div>
     <script>
-        let userId=document.getElementById("uid");
-        let userPassword=document.getElementById("pwd1");
-
-        function checking(){
-            if(userId.value==""){
-                alert("아이디를 입력하세요");
-                userId.focus();
-                return false;
+        var total = parseInt(frm.size.value);
+        frm.total.value = total;
+        function price() {
+            var total = parseInt(frm.size.value);
+            const checkboxes = document.querySelectorAll('.checkbx');
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    total += parseInt(checkboxes[i].value);
+                }
             }
-            if(userPassword.value==""){
-                alert("비밀번호를 입력하세요");
-                userPassword.focus();
-                return false;
-            }
-            //frm.submit();
-            frm2.uid2.value=frm.uid.value;
-            frm2.uemail2.value=frm.uemail.value;
-            frm2.path2.value=frm.path.value;
-        }
-
-        function calculating(){
-            frm.tuition.value=frm.class.value*50;
+            frm.total.value = total;
         }
     </script>
+
 </body>
 
 </html>

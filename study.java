@@ -1,34 +1,18 @@
 package mypack;
 
 import java.util.Arrays;
-
-class A{
-	
-}
-
-class B extends A{
-	
-}
-
-class C extends A{
-	
-}
-
-class D extends B{
-	
-}
 public class study {
 	public static void main(String[] ar) {
-		A aa = new A();
-		System.out.println(aa instanceof A);
-		System.out.println(aa instanceof B);
-		System.out.println(aa instanceof C);
-		System.out.println(aa instanceof D);
+		int a[] = new int[] {4,100,20,1,50,7};
+		for(int i: a) {
+			System.out.println(i);
+			if(i<a.length) {
+				System.out.println("원소가 작습니다");
+			}
+			else {
+				System.out.println("원소가 큽니다");
+			}
+		}
 		
-		A ad =new D();
-		System.out.println(ad instanceof A);
-		System.out.println(ad instanceof B);
-		System.out.println(ad instanceof C);
-		System.out.println(ad instanceof D);
 	}
 }

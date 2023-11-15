@@ -21,6 +21,10 @@
             font-size: 16px;
             font-weight: bold;
         }
+        .dark-mode {
+            background-color: black;
+            color:white;
+        }
     </style>
 </head>
 
@@ -49,7 +53,7 @@
                 <input type="button" onclick="price()" value="계산하기">
                 <input type="text" id="total" name="total" class="price" value="" readonly>
             </fieldset>
-            <input type="button" onclick="dark()" value="다크모드">
+            <input type="button" onclick="darkMode()" value="다크모드">
         </form>
     </div>
     <script>
@@ -79,15 +83,18 @@
             }
             frm.total.value = total;
         }
-        function dark(){
-            if(document.bgColor=="white"){
-                document.bgColor="black";
-                document.fgColor="white";
-            }
-            else{
-                document.bgColor="white";
-                document.fgColor="black";
-            }
+        // function dark(){
+        //     if(document.bgColor=="white"){
+        //         document.bgColor="black";
+        //         document.fgColor="white";
+        //     }
+        //     else{
+        //         document.bgColor="white";
+        //         document.fgColor="black";
+        //     }
+        // }
+        function darkMode(){
+            document.body.classList.toggle("dark-mode");
         }
     </script>
 

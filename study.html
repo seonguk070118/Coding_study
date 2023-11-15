@@ -7,6 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>연습문제 1</title>
     <link rel="stylesheet" href="">
+    <style>
+        #container {
+            width: 400px;
+            margin: 0 auto;
+        }
+        fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+        }
+        #total {
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,6 +49,7 @@
                 <input type="button" onclick="price()" value="계산하기">
                 <input type="text" id="total" name="total" class="price" value="" readonly>
             </fieldset>
+            <input type="button" onclick="dark()" value="다크모드">
         </form>
     </div>
     <script>
@@ -47,10 +63,10 @@
                     total2 += parseInt(checkboxes[i].value);
                 }
             }
-            total=total2;
+            total = total2;
             frm.total.value = total;
         }
-        
+
         for (i = 0; i < checkboxes.length; i++) {
             checkboxes[i].addEventListener("click", calc);
         }
@@ -62,6 +78,16 @@
                 total -= parseInt(this.value);
             }
             frm.total.value = total;
+        }
+        function dark(){
+            if(document.bgColor=="white"){
+                document.bgColor="black";
+                document.fgColor="white";
+            }
+            else{
+                document.bgColor="white";
+                document.fgColor="black";
+            }
         }
     </script>
 

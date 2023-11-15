@@ -3,21 +3,33 @@
 #include <string.h>
 #include<limits.h>
 #include <stdbool.h>
-int digit_sum(int x){
-	if(x==0) return 0;
-	return x%10+digit_sum(x/10);
+int reverse(int x){
+	int temp=0;
+	while(x){
+		temp=temp*10+x%10;
+		x=x/10;
+	}
+	return temp;
 }
 
-int main(){
-	int n,i,max=0,temp,data,sum,max_sum;
-	scanf("%d",&n);
-	for(i=1;i<=n;i++){
-		scanf("%d",&data);
-		sum=digit_sum(data);
-		max_sum=digit_sum(max);
-		if(sum>max_sum) max=data;
-		else if(sum==max_sum) max=data>max ? data:max;
+bool isPrime(int x){
+	if(x==1) return false;
+	for(int i=2;i<x;i++){
+		if(x%i==0) return false;
+		
 	}
-	printf("%d",max);
+	return true;
+}
+
+int main() {
+	int n,data,result,i;
+	scanf("%d",&n);
+	for(i=0;i<n;i++){
+		scanf("%d",&data);
+		result=reverse(data);
+		if(isPrime(result)) printf("%d ",result);
+	}
+	
 	return 0;
 }
+

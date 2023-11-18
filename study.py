@@ -1,7 +1,9 @@
 n=int(input())
-a=n
-for i in range(n+1):
+a=n-1
+for i in range(n):
     for j in range(a):
-        print(a,end=' ')
-    print()
+        print(end=' ')
+    for j in range(n):
+        print('*',end='')
     a-=1
+    print()

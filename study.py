@@ -5,7 +5,6 @@ for i in range(1,m+1):
     for j in range(1,n+1):
         a[i][j]=b
         b-=1
-
 for i in range(1,m+1):
     for j in range(1,n+1):
         print(a[i][j],end=' ')

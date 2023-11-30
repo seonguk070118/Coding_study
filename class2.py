@@ -5,10 +5,7 @@ class stack:
         self.list=[None]*capacity
         self.capacity=capacity
     def isEmpty(self):
-        if self.top==-1:
-            return 1
-        else:
-            return 0
+        return self.top==-1
     def isFull(self):
         if self.top==self.capacity-1:
             return 1
@@ -32,11 +29,11 @@ class stack:
             return
     def peek(self):
         if not self.isEmpty():
-            print(self.list[self.top])
-            return
+            return self.list[self.top]
         else:
             print("스텍 빔")
             return
+
     def Print(self): # 스텍 출력하기
         print(self.list)
     def reversePrintPop(self): # 스텍 역순 출력하기
@@ -52,7 +49,43 @@ class stack:
             newlist[i]=self.list[i]
         self.list=newlist
 
-a=stack()
+def Priority(a):
+    if a=='(' or a==')': return 0
+    elif a=='+' or a=='-': return 1
+    elif a=='*' or a=='/': return 2
+    else: return -1
+
+def change(l):
+    s=stack(100)
+    opl=[]
+    for i in l:
+        if i in '(':
+            s.push('(')
+        elif i in ')':
+            while not s.isEmpty():
+                op=s.pop()
+                if op=='(': break
+                else: opl.append(op)
+        elif i in '+-*/':
+            while not s.isEmpty():
+                op=s.peek()
+                if (Priority(i)<=Priority(op)):
+                    opl.append(op)
+                    s.pop()
+                else: break
+            s.push(i)
+        else:
+            opl.append(i)
+    while not s.isEmpty():
+        opl.append(s.pop())
+    return opl
+
+inf=input()
+inf=list(inf)
+print(change(inf))
+
+
+'''a=stack()
 a.push(1)
 a.pop()
 a.push(2)
@@ -63,4 +96,4 @@ a.Print()
 #a.reversePrintPop()
 a.sPrint(2,3)
 a.plusStack(5)
-a.Print()
+a.Print()'''

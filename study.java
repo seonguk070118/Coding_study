@@ -2,25 +2,32 @@ package mypack;
 
 import java.util.Arrays;
 
-interface GPU{
-	public abstract void start();
-	public default void gamemode() {
-		System.out.println("Gamemode On");
+class A{
+	void abc() {
+		System.out.println("A 클래스 메서드 abc()");
+		class D{
+			
+		}
 	}
-}
-
-class LGGPU implements GPU{
-	public void start() {
-		System.out.println("LG GPU start");
+	class B{
+		void bcd() {
+			System.out.println("B클래스 메서드 bcd()");
+			abc();
+		}
+	}
+	static class C{
+		
 	}
 }
 
 public class study {
 
 	public static void main(String[] ar) {
-		GPU a = new LGGPU();
-		a.start();
-		a.gamemode();
+		A a = new A();
+		A.B b=a.new B();
+		A.C c=new A.C();
+		a.abc();
+		b.bcd();
 	}
 }
 

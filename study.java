@@ -31,7 +31,6 @@ class phone extends telephone {
 		System.out.println("문자 발송합니다");
 	}
 }
-
 public class study {
 
 	public static void main(String[] ar) {

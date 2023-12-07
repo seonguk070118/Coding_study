@@ -94,7 +94,7 @@ a.dequeue()
 a.dequeue()
 a.printqueue()
 
-# 덱ADT
+# 선형덱ADT
 class Deque:
     def __init__(self,capacity=5):
         self.capacity=capacity

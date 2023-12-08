@@ -214,7 +214,6 @@ class CDeque:
         if self.isEmpty(): print('공백')
         else:
             return self.list[self.rear]
-
 a=CDeque()
 a.addRear(1)
 a.printqueue()

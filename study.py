@@ -1,5 +1,12 @@
-n=int(input())
-sum=1
-for i in range(2,n+1):
-    sum*=i
-print(sum)
+n=input()
+m=input()
+a=m[2]
+a=int(a)
+print(int(n)*a)
+a=m[1]
+a=int(a)
+print(int(n)*a)
+a=m[0]
+a=int(a)
+print(int(n)*a)
+print(int(n)*int(m))

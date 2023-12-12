@@ -1,12 +1,4 @@
-n=input()
-m=input()
-a=m[2]
-a=int(a)
-print(int(n)*a)
-a=m[1]
-a=int(a)
-print(int(n)*a)
-a=m[0]
-a=int(a)
-print(int(n)*a)
-print(int(n)*int(m))
+print('\    /\\')
+print(' )  ( \')')
+print('(  /  )')
+print(' \\(__)|')

@@ -1,5 +1,9 @@
 n=int(input())
-for i in range(1,n+1):
-    a,b=map(int,input().split())
-    c=a+b
-    print(f'Case #{i}: {a} + {b} = {c}')
+a=[]
+sum=0
+a=input().split()
+m=input()
+for i in a:
+    if m==i:
+        sum+=1
+print(sum)

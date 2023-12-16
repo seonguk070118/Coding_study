@@ -1,9 +1,10 @@
-n=int(input())
-a=[]
-sum=0
-a=input().split()
-m=input()
-for i in a:
-    if m==i:
-        sum+=1
-print(sum)
+h,m=map(int,input().split())
+t=int(input())
+for i in range(t):
+    m+=1
+    if m==60:
+        m=0
+        h+=1
+    if h==24:
+        h=0
+print(f'{h} {m}')

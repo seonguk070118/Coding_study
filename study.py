@@ -1,10 +1,5 @@
-h,m=map(int,input().split())
+import sys
 t=int(input())
 for i in range(t):
-    m+=1
-    if m==60:
-        m=0
-        h+=1
-    if h==24:
-        h=0
-print(f'{h} {m}')
+    a,b=map(int,sys.stdin.readline().split())
+    print(a+b)

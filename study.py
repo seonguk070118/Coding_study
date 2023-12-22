@@ -1,9 +1,8 @@
-a=[]
-a=[0]*30
-for i in range(28):
-    n=int(input())
-    a[n-1]=1
-
-for i in range(30):
-    if a[i]==0:
-        print(i+1)
+n,m=map(int,input().split())
+l=[0 for i in range(1,n+21)]
+for i in range(m):
+    a,b,c=map(int,input().split())
+    for j in range(a,b+1):
+        l[j] = c
+for i in range(1,n+1):
+    print(l[i],end=' ')

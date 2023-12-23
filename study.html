@@ -41,13 +41,14 @@
         const checkboxes = document.querySelectorAll('.checkbx');
         frm.total.value = total;
         function price() {
+            var total2 = parseInt(frm.size.value);
             for (let i = 0; i < checkboxes.length; i++) {
                 if (checkboxes[i].checked) {
-                    total += parseInt(checkboxes[i].value);
+                    total2 += parseInt(checkboxes[i].value);
                 }
             }
+            total=total2;
             frm.total.value = total;
-
         }
         
         for (i = 0; i < checkboxes.length; i++) {

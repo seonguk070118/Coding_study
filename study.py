@@ -1,9 +1,12 @@
-n,m=map(int,input().split())
-l=[i for i in range(1,n+2)]
-for i in range(m):
-    a,b=map(int,input().split())
-    t=l[a]
-    l[a]=l[b]
-    l[b]=t
-for i in range(1,n+1):
-    print(l[i]-1,end=' ')
+l=[]
+for i in range(10):
+    a=int(input())
+    l.append(a)
+for i in range(10):
+    l[i]=l[i]%42
+b=[]
+for i in l:
+    if i not in b:
+        b.append(i)
+
+print(len(b))

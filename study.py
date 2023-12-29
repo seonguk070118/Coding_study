@@ -1,12 +1,15 @@
-l=[]
-for i in range(10):
-    a=int(input())
-    l.append(a)
-for i in range(10):
-    l[i]=l[i]%42
+n,m=map(int,input().split())
 b=[]
-for i in l:
-    if i not in b:
-        b.append(i)
+for i in range(n):
+    a=list(map(int,input().split()))
+    b.append(a)
 
-print(len(b))
+c=[]
+for i in range(n):
+    d=list(map(int,input().split()))
+    c.append(d)
+
+for i in range(n):
+    for j in range(m):
+        print(b[i][j]+c[i][j],end=' ')
+    print()

@@ -1,15 +1,14 @@
+import sys
 n,m=map(int,input().split())
-b=[]
-for i in range(n):
-    a=list(map(int,input().split()))
-    b.append(a)
+l=[i for i in range(1,n+1)]
+for i in range(m):
+    k=0
+    a,b=map(int,input().split())
+    l2=l[a-1:b]
+    l2.reverse()
+    for j in range(a-1,b):
+        l[j]=l2[k]
+        k+=1
 
-c=[]
-for i in range(n):
-    d=list(map(int,input().split()))
-    c.append(d)
-
-for i in range(n):
-    for j in range(m):
-        print(b[i][j]+c[i][j],end=' ')
-    print()
+for i in l:
+    print(i,end=' ')

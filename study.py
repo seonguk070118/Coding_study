@@ -1,14 +1,13 @@
-import sys
-n,m=map(int,input().split())
-l=[i for i in range(1,n+1)]
-for i in range(m):
-    k=0
-    a,b=map(int,input().split())
-    l2=l[a-1:b]
-    l2.reverse()
-    for j in range(a-1,b):
-        l[j]=l2[k]
-        k+=1
-
-for i in l:
+a=[-1 for i in range(26)]
+b=input()
+s=0
+for i in b:
+    c=ord(i)
+    c-=97
+    if a[c]==-1:
+        a[c]=s
+        s+=1
+    else:
+        s+=1
+for i in a:
     print(i,end=' ')

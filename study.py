@@ -1,13 +1,14 @@
-a=[-1 for i in range(26)]
-b=input()
-s=0
-for i in b:
-    c=ord(i)
-    c-=97
-    if a[c]==-1:
-        a[c]=s
-        s+=1
+a,b=map(list,input().split())
+a.reverse()
+b.reverse()
+for i in range(3):
+    if a[i]==b[i]:
+        continue
+    elif a[i]>b[i]:
+        for i in range(3):
+            print(a[i],end='')
+        break
     else:
-        s+=1
-for i in a:
-    print(i,end=' ')
+        for i in range(3):
+            print(b[i],end='')
+        break

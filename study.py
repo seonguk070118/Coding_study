@@ -1,15 +1,6 @@
-n=int(input())
-for i in range(1,n+1):
-    for j in range(n-i):
-        print(' ',end='')
-    for j in range(i):
-        print('*',end='')
-    for j in range(i-1):
-        print('*',end='')
-    print()
-for i in range(n-1,0,-1):
-    for j in range(n-i):
-        print(' ',end='')
-    for j in range(i*2-1):
-        print('*',end='')
-    print()
+n=input()
+a=n[::-1]
+if n==a:
+    print('1')
+else:
+    print('0')

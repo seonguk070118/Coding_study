@@ -1,6 +1,5 @@
-n=input()
-a=n[::-1]
-if n==a:
-    print('1')
-else:
-    print('0')
+a=int(input())
+b=int(input())
+print(a+b)
+print(a-b)
+print(a*b)

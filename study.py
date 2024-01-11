@@ -1,3 +1,5 @@
-n,m=map(int,input().split())
-print(n//m)
-print(n%m)
+a=map(int,input().split())
+s=0
+for i in a:
+    s+=i*i
+print(s%10)

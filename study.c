@@ -5,24 +5,37 @@
 #include <stdbool.h>
 
 int main() {
-    char a[27]={'A','B','C','D','E'
-	,'F','G','H','I','J','K','L','M'
-	,'N','O','P','Q','R','S','T','U'
-	,'V','W','X','Y','Z','\0'};
-    int b[27]={3,3,3,4,4,4,5,5,5
-	,6,6,6,7,7,7,8,8,8,8,9,9,9,10
-	,10,10,10,'\0'};
-    int i,sum=0,j;
-	char n[16];
+    char a[27]={"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+    int b[27]={0};
+    int i,j,max=0,s=0,maxi;
+	char n[1000001];
     scanf("%s",&n);
     for(i=0;i<strlen(n);i++){
-    	for(j=0;j<26;j++){
-    		if(n[i]==a[j]){
-    			sum+=b[j];
+    	if(n[i]>96){
+			b[n[i]-97]++;
+		}
+		else{
+    		b[n[i]-65]++;
+		}
+	}
+	for(i=0;i<26;i++){
+		if(max<b[i]){
+			max=b[i];
+			maxi=i;
+		}
+	}
+	for(j=0;j<26;j++){
+		if(max==b[j]){
+			if(s==0){
+				s++;
+			}
+			else{
+				printf("?");
+				return 0;
 			}
 		}
 	}
-	printf("%d",sum);
+	printf("%c",a[maxi]);
     return 0;
 }
 

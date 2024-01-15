@@ -1,35 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include<limits.h>
+#include <limits.h>
 #include <stdbool.h>
-int reverse(int x){
-	int temp=0;
-	while(x){
-		temp=temp*10+x%10;
-		x=x/10;
-	}
-	return temp;
-}
-
-bool isPrime(int x){
-	if(x==1) return false;
-	for(int i=2;i<x;i++){
-		if(x%i==0) return false;
-		
-	}
-	return true;
-}
 
 int main() {
-	int n,data,result,i;
-	scanf("%d",&n);
-	for(i=0;i<n;i++){
-		scanf("%d",&data);
-		result=reverse(data);
-		if(isPrime(result)) printf("%d ",result);
+    char a[27]={'A','B','C','D','E'
+	,'F','G','H','I','J','K','L','M'
+	,'N','O','P','Q','R','S','T','U'
+	,'V','W','X','Y','Z','\0'};
+    int b[27]={3,3,3,4,4,4,5,5,5
+	,6,6,6,7,7,7,8,8,8,8,9,9,9,10
+	,10,10,10,'\0'};
+    int i,sum=0,j;
+	char n[16];
+    scanf("%s",&n);
+    for(i=0;i<strlen(n);i++){
+    	for(j=0;j<26;j++){
+    		if(n[i]==a[j]){
+    			sum+=b[j];
+			}
+		}
 	}
-	
-	return 0;
+	printf("%d",sum);
+    return 0;
 }
 

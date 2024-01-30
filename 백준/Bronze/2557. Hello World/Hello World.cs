@@ -1,1 +1,5 @@
-Console.WriteLine("Hello World!");
+void mfunction()
+{
+    Console.WriteLine("Hello World!");
+}
+mfunction();

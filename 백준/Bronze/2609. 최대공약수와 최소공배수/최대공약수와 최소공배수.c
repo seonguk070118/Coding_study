@@ -6,18 +6,6 @@
 
 int a, b;
 
-int gc(){
-    
-    int i,n=1;
-    
-    for(i=1;i<a;i++){
-        if(a%i==0 && b%i==0){
-            n=i;
-        }
-    }
-    return n;
-}
-
 int gcd(int p, int q){ if(p==0) return q; return gcd(q%p, p);}
 
 long long int lcm(long long int a,long long int b)

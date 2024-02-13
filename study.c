@@ -5,37 +5,27 @@
 #include <stdbool.h>
 
 int main() {
-    char a[27]={"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
-    int b[27]={0};
-    int i,j,max=0,s=0,maxi;
-	char n[1000001];
-    scanf("%s",&n);
-    for(i=0;i<strlen(n);i++){
-    	if(n[i]>96){
-			b[n[i]-97]++;
-		}
-		else{
-    		b[n[i]-65]++;
-		}
+	int i,j,k,n,m,a[102]={0},mx=300001,mh;
+	scanf("%d %d",&n,&m);
+	for(i=0;i<n;i++){
+		scanf("%d",&a[i]);
 	}
-	for(i=0;i<26;i++){
-		if(max<b[i]){
-			max=b[i];
-			maxi=i;
-		}
-	}
-	for(j=0;j<26;j++){
-		if(max==b[j]){
-			if(s==0){
-				s++;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(i==j){
+				continue;
 			}
-			else{
-				printf("?");
-				return 0;
+			for(k=0;k<n;k++){
+				if(k==j||k==i){
+					continue;
+				}
+				if(m-(a[i]+a[j]+a[k])<mx && m-(a[i]+a[j]+a[k])>=0){
+					mh=a[i]+a[j]+a[k];
+					mx=m-(a[i]+a[j]+a[k]);
+				}
 			}
 		}
 	}
-	printf("%c",a[maxi]);
-    return 0;
+	printf("%d",mh);
+	return 0;
 }
-

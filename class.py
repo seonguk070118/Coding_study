@@ -1,25 +1,19 @@
-from socket import *
-Host = '127.0.0.1'
-Port = 9999
-server_socket = socket(AF_INET,SOCK_STREAM)
-server_socket.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
-server_socket.bind((Host,Port))
+import os
+import cv2 as cv
 
-print('listening...')
-server_socket.listen()
+img = cv.imread('./image/cute.jpg')
 
+height = img.shape[0]
+width = img.shape[1]
+for y in range(0,height):
+    img.itemset(y,int(width/2),0,0)
+    img.itemset(y,int(width/2),1,0)
+    img.itemset(y,int(width/2),2,255)
 
-client_socket, addr = server_socket.accept()
-print('Connected by',addr)
-
-while True:
-    data = client_socket.recv(1024)
-    if not data:
-        break
-    print('received from',addr,data.decode())
-    client_socket.sendall(data)
-
-
-
-client_socket.close()
-server_socket.close()
+    for x in range(0,width):
+        img.itemset(int(height/2),x,0,255)
+        img.itemset(int(height/2),x,1,0)
+        img.itemset(int(height/2),x,2,0)
+cv.imshow('result',img)
+cv.waitKey(0)
+cv.destroyAllWindows()

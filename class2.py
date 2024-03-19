@@ -1,12 +1,19 @@
-from socket import *
-Host = '127.0.0.1'
-Port = 9999
+import cv2
+CAMERA_ID = 0
 
-client_socket = socket(AF_INET,SOCK_STREAM)
+cam = cv2.VideoCapture(CAMERA_ID)
+if cam.isOpened()==False:
+    print
+    'Cannot open the camera-%d' % (CAMERA_ID)
+    exit()
 
-client_socket.connect((Host,Port))
-client_socket.sendall('안녕!!!'.encode())
+cv2.namedWindow('CAM Window')
 
-data = client_socket.recv(1024)
-print('Received from',repr(data.decode()))
-client_socket.close()
+while(True):
+    ret,frame = cam.read()
+    cv2.imshow('CAM Window',frame)
+
+    if cv2.waitKey(10)>0:
+        break
+cam.release()
+cv2.destroyAllWindows()

@@ -3,7 +3,7 @@ import numpy as np
 
 def draw_rect(event, x, y, flags, param):
     print(event)
-    if event == cv2.EVENT_LBUTTIONDOWN:
+    if event == cv2.EVENT_LBUTTONDOWN:
         cv2.rectangle(img, (x,y),(x+50, y+50),(255,0,0),-1)
 
 img = np.zeros((512,512,3),np.uint8)

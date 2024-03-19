@@ -1,19 +1,18 @@
-import os
-import cv2 as cv
+import cv2
+import numpy as np
 
-img = cv.imread('./image/cute.jpg')
+def draw_rect(event, x, y, flags, param):
+    print(event)
+    if event == cv2.EVENT_LBUTTIONDOWN:
+        cv2.rectangle(img, (x,y),(x+50, y+50),(255,0,0),-1)
 
-height = img.shape[0]
-width = img.shape[1]
-for y in range(0,height):
-    img.itemset(y,int(width/2),0,0)
-    img.itemset(y,int(width/2),1,0)
-    img.itemset(y,int(width/2),2,255)
+img = np.zeros((512,512,3),np.uint8)
+cv2.namedWindow('image')
+cv2.setMouseCallback('image',draw_rect)
 
-    for x in range(0,width):
-        img.itemset(int(height/2),x,0,255)
-        img.itemset(int(height/2),x,1,0)
-        img.itemset(int(height/2),x,2,0)
-cv.imshow('result',img)
-cv.waitKey(0)
-cv.destroyAllWindows()
+while(1):
+    cv2.imshow('image',img)
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+cv2.destoryAllWindows()

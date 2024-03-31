@@ -4,28 +4,51 @@
 #include <limits.h>
 #include <stdbool.h>
 
-int main() {
-	int i,j,k,n,m,a[102]={0},mx=300001,mh;
-	scanf("%d %d",&n,&m);
-	for(i=0;i<n;i++){
-		scanf("%d",&a[i]);
-	}
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			if(i==j){
-				continue;
-			}
-			for(k=0;k<n;k++){
-				if(k==j||k==i){
-					continue;
-				}
-				if(m-(a[i]+a[j]+a[k])<mx && m-(a[i]+a[j]+a[k])>=0){
-					mh=a[i]+a[j]+a[k];
-					mx=m-(a[i]+a[j]+a[k]);
-				}
-			}
-		}
-	}
-	printf("%d",mh);
-	return 0;
+typedef struct student {
+    int num;
+    char name[20];
+    int mic, lin, pro;
+    int tot;
+    double avg;
+    char grade;
+} Student;
+
+void input_data(Student *pary) {
+	int i;
+    for (i = 0; i < 1; i++) {
+        scanf("%d", &pary[i].num);
+        scanf("%s", pary[i].name);
+        scanf("%d", &pary[i].mic);
+        scanf("%d", &pary[i].lin);
+        scanf("%d", &pary[i].pro);
+    }
 }
+
+void calc_data(Student *pary) {
+	int i;
+    for (i = 0; i < 1; i++) {
+        pary[i].tot = pary[i].mic + pary[i].lin + pary[i].pro;
+        pary[i].avg = pary[i].tot / 3.0;
+        
+        if (pary[i].avg >= 90) pary[i].grade = 'A';
+        else if (pary[i].avg >= 80) pary[i].grade = 'B';
+        else if (pary[i].avg >= 70) pary[i].grade = 'C';
+        else pary[i].grade = 'F';
+    }
+}
+
+void print_data(Student *pary) {
+	int i;
+    for (i = 0; i < 1; i++) {
+        printf("%d, %s, %d, %d, %d, %d, %.0f, %c\n", pary[i].num, pary[i].name, pary[i].mic, pary[i].lin, pary[i].pro, pary[i].tot, pary[i].avg, pary[i].grade);
+    }
+}
+
+int main(void) {
+    Student ary[5];
+    input_data(ary);
+    calc_data(ary);
+    print_data(ary);
+    return 0;
+}
+

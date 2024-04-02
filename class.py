@@ -1,29 +1,43 @@
-import cv2
+import cv2 as cv
 import numpy as np
+import glob
 
-def nothing():
-    pass
+nCols = 9
+nRows = 6
 
-cv2.namedWindow('RGB track bar')
-cv2.createTrackbar('red color','RGB track bar',0,255,nothing)
-cv2.createTrackbar('green color','RGB track bar',0,255,nothing)
-cv2.createTrackbar('blue color','RGB track bar',0,255,nothing)
+criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER,30,0.001)
 
-cv2.setTrackbarPos('red color','RGB track bar',125)
-cv2.setTrackbarPos('green color','RGB track bar',125)
-cv2.setTrackbarPos('blue color','RGB track bar',125)
+objp = np.zeros((nCols*nRows,3),np.float32)
+objp[:,:2] = np.mgrid[0:nCols,0:nRows].T.reshape(-1,2)
 
-img = np.zeros((512,512,3),np.uint8)
+objpoints = []
+imgpoints = []
+images = glob.glob('*.jpg')
 
-while(1):
-    redVal = cv2.getTrackbarPos('red color','RGB track bar')
-    greenVal = cv2.getTrackbarPos('green color','RGB track bar')
-    blueVal = cv2.getTrackbarPos('blue color','RGB track bar')
+for fname in images:
+    img = cv.imread(fname)
+    gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
 
-    print(redVal)
+    ret,corners = cv.findChessboardCorners(gray,(nCols,nRows),None)
 
-    cv2.rectangle(img,(0,0),(512,512),(blueVal,greenVal,redVal),-1)
-    cv2.imshow('RGB track bar',img)
+    if ret == True:
+        objpoints.append(objp)
+        corners2 = cv.cornerSubPix(gray,corners,(11,11),(-1,-1),criteria)
+        imgpoints.append(corners2)
 
-    if cv2.waitKey(30) & 0xFF == 27:
-        break
+        cv.drawChessboardCorners(img,(nCols,nRows),corners2,ret)
+        cv.imshow('img',img)
+        cv.waitKey(500)
+cv.destroyAllWindows()
+
+ret,mtx,dist,rvecs,tvecs = cv.calibrateCamera(objpoints,imgpoints,gray.shape[::-1],None,None)
+
+img = cv.imread(images[0])
+h,w = img.shape[:2]
+newcameramtx,roi = cv.getOptimalNewCameraMatrix(mtx,dist,(w,h),1,(w,h))
+
+dst = cv.undistort(img,mtx,dist,None,newcameramtx)
+
+x,y,w,h=roi
+dst = dst[y:y+h,x:x+w]
+cv.imwrite('calibresult.png',dst)

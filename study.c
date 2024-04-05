@@ -50,5 +50,6 @@ int main(void) {
     calc_data(ary);
     print_data(ary);
     return 0;
+
 }
 

@@ -1,43 +1,22 @@
 import cv2 as cv
 import numpy as np
-import glob
+from matplotlib import pyplot as plt
 
-nCols = 9
-nRows = 6
+img = cv.imread('puppy.jpg',cv.IMREAD_GRAYSCALE)
+assert img is not None, "file could not be read, check with os.path.exists()"
 
-criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER,30,0.001)
+#이진화 수행하기
+ret,thresh1 = cv.threshold(img,127,255,cv.THRESH_BINARY)
+ret,thresh2 = cv.threshold(img,127,255,cv.THRESH_BINARY_INV)
+ret,thresh3 = cv.threshold(img,127,255,cv.THRESH_TRUNC)
+ret,thresh4 = cv.threshold(img,127,255,cv.THRESH_TOZERO)
+ret,thresh5 = cv.threshold(img,127,255,cv.THRESH_TOZERO_INV)
 
-objp = np.zeros((nCols*nRows,3),np.float32)
-objp[:,:2] = np.mgrid[0:nCols,0:nRows].T.reshape(-1,2)
+titles = ['Origina Image','Image','BINARY','BINARY_INY','TRUNC','TOZERO','TOZERO_INV']
 
-objpoints = []
-imgpoints = []
-images = glob.glob('*.jpg')
-
-for fname in images:
-    img = cv.imread(fname)
-    gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-
-    ret,corners = cv.findChessboardCorners(gray,(nCols,nRows),None)
-
-    if ret == True:
-        objpoints.append(objp)
-        corners2 = cv.cornerSubPix(gray,corners,(11,11),(-1,-1),criteria)
-        imgpoints.append(corners2)
-
-        cv.drawChessboardCorners(img,(nCols,nRows),corners2,ret)
-        cv.imshow('img',img)
-        cv.waitKey(500)
-cv.destroyAllWindows()
-
-ret,mtx,dist,rvecs,tvecs = cv.calibrateCamera(objpoints,imgpoints,gray.shape[::-1],None,None)
-
-img = cv.imread(images[0])
-h,w = img.shape[:2]
-newcameramtx,roi = cv.getOptimalNewCameraMatrix(mtx,dist,(w,h),1,(w,h))
-
-dst = cv.undistort(img,mtx,dist,None,newcameramtx)
-
-x,y,w,h=roi
-dst = dst[y:y+h,x:x+w]
-cv.imwrite('calibresult.png',dst)
+images = [img,thresh1,thresh2,thresh3,thresh4,thresh5]
+for i in range(6):
+    plt.subplot(2,3,i+1),plt.imshow(images[i],'gray',vmin=0,vmax=255)
+    plt.title(titles[i])
+    plt.xticks([]),plt.yticks([])
+plt.show()

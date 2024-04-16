@@ -5,18 +5,16 @@ from matplotlib import pyplot as plt
 img = cv.imread('puppy.jpg',cv.IMREAD_GRAYSCALE)
 assert img is not None, "file could not be read, check with os.path.exists()"
 
-#이진화 수행하기
-ret,thresh1 = cv.threshold(img,127,255,cv.THRESH_BINARY)
-ret,thresh2 = cv.threshold(img,127,255,cv.THRESH_BINARY_INV)
-ret,thresh3 = cv.threshold(img,127,255,cv.THRESH_TRUNC)
-ret,thresh4 = cv.threshold(img,127,255,cv.THRESH_TOZERO)
-ret,thresh5 = cv.threshold(img,127,255,cv.THRESH_TOZERO_INV)
+img = cv.medianBlur(img,5)
 
-titles = ['Origina Image','Image','BINARY','BINARY_INY','TRUNC','TOZERO','TOZERO_INV']
+ret,th1 = cv.threshold(img,127,255,cv.THRESH_BINARY)
+th2 = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_MEAN_C,cv.THRESH_BINARY,11,2)
+th3 = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY,11,2)
 
-images = [img,thresh1,thresh2,thresh3,thresh4,thresh5]
-for i in range(6):
-    plt.subplot(2,3,i+1),plt.imshow(images[i],'gray',vmin=0,vmax=255)
+titles = ['Original Image','Global Thresholding (v = 127)','Adaptive Mean Thresholding','Adaptive Gaussian Thresholding']
+images = [img,th1,th2,th3]
+for i in range(4):
+    plt.subplot(2,2,i+1),plt.imshow(images[i],'gray')
     plt.title(titles[i])
     plt.xticks([]),plt.yticks([])
 plt.show()

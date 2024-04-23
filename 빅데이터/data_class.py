@@ -1,45 +1,46 @@
 import cv2 as cv2
-import numpy as np
-from matplotlib import pyplot as plt
+CAMERA_ID = 0
+cam = cv2.VideoCapture(CAMERA_ID)
+if cam.isOpened() == False:
+    print
+    'Cannot open the camera-%d' % (CAMERA_ID)
+    exit()
 
-img1 = cv2.imread('images/img1.jpg')
-img2 = cv2.imread('images/img2.jpg')
-img3 = cv2.imread('images/img3.jpg')
-img4 = cv2.imread('images/img4.jpg')
-img5 = cv2.imread('images/img5.jpg')
+cv2.namedWindow('CAM Window')
 
-print(img5.shape)
+background = None
 
-mask = np.full(shape=img5.shape, fill_value=0, dtype=np.uint8)
-h,w,c=img5.shape
-x = (int)(w/2) - 60; y = (int)(h/2) -60
-cv2.rectangle(mask, (x,y), (x+120 , y+120), (255,255,255), -1)
+while(True):
+    ret,frame = cam.read()
+    gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+    cv2.imshow('CAM Window',gray)
+    key = cv2.waitKey(33)
+    if key == ord('q'):
+        break
+    if key == ord('a'):
+        background = gray.copy()
+        print('성공')
+        break
+c=-1
+while(True):
+    ret,frame = cam.read()
+    gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+    diff = cv2.absdiff(gray,background)
+    key = cv2.waitKey(33)
+    
+    if key == ord('b'):
+        c*=-1
+        print(c)
+    if c == 1:
+        _, thresh = cv2.threshold(diff, 25, 255, cv2.THRESH_BINARY)
+        cv2.imshow('CAM Window', thresh)
+        key = cv2.waitKey(33)
+        
+    else:
+        cv2.imshow('CAM Window',diff)
+    if key == ord('q'):
+        break
 
-ress = []
-ress.append(cv2.add(img1, img2))
-ress.append(cv2.addWeighted(img1, 0.5, img2, 0.5, 0))
-ress.append(cv2.subtract(img3, img4))
-ress.append(cv2.absdiff(img3, img4))
-ress.append(cv2.bitwise_not(img5))
-ress.append(cv2.bitwise_and(img5, mask))
 
-titles = []
-titles.append('input1')
-titles.append('input2')
-titles.append('input3')
-titles.append('input4')
-titles.append('input5')
-titles.append('mask')
-
-titles.append('add')
-titles.append('addWeighted')
-titles.append('subtract')
-titles.append('absdiff')
-titles.append('bitwise_not')
-titles.append('bitwise_and')
-images = [img1,img2,img3,img4,img5,mask,ress[0],ress[1],ress[2],ress[3],ress[4],ress[5]]
-for i in range(12):
-    plt.subplot(2,6,i+1),plt.imshow(images[i])
-    plt.title(titles[i])
-    plt.xticks([]),plt.yticks([])
-plt.show()
+cam.release()
+cv2.destroyAllWindows()

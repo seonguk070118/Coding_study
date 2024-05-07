@@ -38,12 +38,3 @@ while(True):
 # 루프를 빠져나온 후 자원을 해제하고 모든 창을 닫음
 cam.release()
 cv2.destroyAllWindows()
-
-
-
-
-
-
-img = np.zeros((512,512,3),np.uint8)
-while(1):
-    break

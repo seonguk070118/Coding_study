@@ -2,26 +2,48 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
+CAMERA_ID = 0
+cam = cv2.VideoCapture(CAMERA_ID)
+if not cam.isOpened():
+    print('Cannot open the camera-%d' % CAMERA_ID)
+    exit()
 
-img1 = cv2.imread("./images/img8.jpg", cv2.IMREAD_GRAYSCALE)
+def nothing():
+    pass
 
-ksize1 = 3; ksize2 = 5; ksize3 = 7; ksize4 = 9
-kernel = np.full(shape=[ksize4,ksize4],fill_value=1,dtype=np.float32)/ksize4*ksize4
-res1 = cv2.blur(img1,(ksize1,ksize1))
-res2 = cv2.blur(img1,(ksize2,ksize2))
-res3 = cv2.boxFilter(img1,-1,(ksize3,ksize3))
-res4 = cv2.filter2D(img1,-1,kernel)
-res5 = cv2.boxFilter(img1,-1,(1,21))
+cv2.namedWindow('RGB track bar')
+cv2.createTrackbar('red color','RGB track bar',1,255,nothing)
+cv2.createTrackbar('green color','RGB track bar',1,255,nothing)
+cv2.createTrackbar('blue color','RGB track bar',1,255,nothing)
 
-ress = []
-ress.append(img1),ress.append(res1),ress.append(res2)
-ress.append(res3),ress.append(res4),ress.append(res5)
+while(True):
+    ret, frame = cam.read()
+    if not ret:
+        print("카메라 프레임을 읽을 수 없습니다. 종료합니다.")
+        break  # 카메라에서 프레임을 제대로 읽지 못했으면 루프를 빠져나옴
 
-titles = ['input','res1','res2','res3','res4','res5']
+    #cv2.setTrackbarPos('red color','RGB track bar',125)
+    #cv2.setTrackbarPos('greed color','RGB track bar',125)
+    #cv2.setTrackbarPos('blue color','RGB track bar',125)
+    redVal = cv2.getTrackbarPos('red color', 'RGB track bar')
+    greenVal = cv2.getTrackbarPos('green color', 'RGB track bar')
+    blueVal = cv2.getTrackbarPos('blue color', 'RGB track bar')
+    dst = cv2.blur(frame,(redVal,greenVal))
+    
+    cv2.imshow('RGB track bar', dst)
+    
+    if cv2.waitKey(1) & 0xFF == ord('q'):  # 'q'를 누르면 루프에서 빠져나옴
+        break
 
-for i in range(6):
-    plt.subplot(2,3,i+1)
-    plt.imshow(ress[i],cmap='gray')
-    plt.title(titles[i])
-    plt.xticks([]),plt.yticks([])
-plt.show()
+# 루프를 빠져나온 후 자원을 해제하고 모든 창을 닫음
+cam.release()
+cv2.destroyAllWindows()
+
+
+
+
+
+
+img = np.zeros((512,512,3),np.uint8)
+while(1):
+    break

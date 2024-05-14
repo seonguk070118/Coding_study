@@ -1,40 +1,37 @@
-import cv2
 import numpy as np
+import cv2
 from matplotlib import pyplot as plt
 
-CAMERA_ID = 0
-cam = cv2.VideoCapture(CAMERA_ID)
-if not cam.isOpened():
-    print('Cannot open the camera-%d' % CAMERA_ID)
-    exit()
+img1 = cv2.imread("빅데이터\images\img11.jpg", cv2.IMREAD_GRAYSCALE)
 
-def nothing():
-    pass
+h,w,=img1.shape
+tlans_x = 10; tlans_y = 25
+point1_src = np.float32([[15,20],[50,70],[130,140]])
+point1_dst = np.float32(point1_src + [tlans_x,tlans_y])
+affine_mat1 = cv2.getAffineTransform(point1_src,point1_dst)
+user_mat1 = np.float32([[1,0,tlans_x],[0,1,tlans_y]])
+res1 = cv2.warpAffine(img1,affine_mat1,(w,h))
+res2 = cv2.warpAffine(img1,user_mat1,(w,h))
 
-cv2.namedWindow('RGB track bar')
-cv2.createTrackbar('red color','RGB track bar',1,255,nothing)
-cv2.createTrackbar('green color','RGB track bar',1,255,nothing)
-cv2.createTrackbar('blue color','RGB track bar',1,255,nothing)
+scale_x = 0.8; scale_y = 0.6
+user_mat2 = np.float32([[scale_x,0,0],[0,scale_y,0]])
+res3 = cv2.warpAffine(img1,user_mat2,(w,h))
+res4 = cv2.resize(img1,(0,0),None,scale_x,scale_y)
+background = np.full(shape=[h,w],fill_value=0, dtype=np.uint8)
+background[:round(h*scale_y), :round(w*scale_x)] = res4;
+res4 = background
 
-while(True):
-    ret, frame = cam.read()
-    if not ret:
-        print("카메라 프레임을 읽을 수 없습니다. 종료합니다.")
-        break  # 카메라에서 프레임을 제대로 읽지 못했으면 루프를 빠져나옴
+user_mat3 = np.float32([[0.4,0,100],[0,0.6,50]])
+res5 = cv2.warpAffine(img1,user_mat3,(w,h))
 
-    #cv2.setTrackbarPos('red color','RGB track bar',125)
-    #cv2.setTrackbarPos('greed color','RGB track bar',125)
-    #cv2.setTrackbarPos('blue color','RGB track bar',125)
-    redVal = cv2.getTrackbarPos('red color', 'RGB track bar')
-    greenVal = cv2.getTrackbarPos('green color', 'RGB track bar')
-    blueVal = cv2.getTrackbarPos('blue color', 'RGB track bar')
-    dst = cv2.blur(frame,(redVal,greenVal))
-    
-    cv2.imshow('RGB track bar', dst)
-    
-    if cv2.waitKey(1) & 0xFF == ord('q'):  # 'q'를 누르면 루프에서 빠져나옴
-        break
+ress=[]
+ress.append(img1),ress.append(res1),ress.append(res2)
+ress.append(res3),ress.append(res4),ress.append(res5)
+titles=['input','res1','res2','res3','res4','res5']
 
-# 루프를 빠져나온 후 자원을 해제하고 모든 창을 닫음
-cam.release()
-cv2.destroyAllWindows()
+for i in range(6):
+    plt.subplot(2,3,i+1)
+    plt.imshow(ress[i],cmap='gary')
+    plt.title(titles[i])
+    plt.xticks([]),plt.yticks([])
+plt.show()

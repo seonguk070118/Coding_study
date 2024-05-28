@@ -1,27 +1,38 @@
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
+img = cv2.imread("KakaoTalk_20240528_112132361.jpg")
+h,w, d = img.shape
+xl = []
+yl = []
+
+def draw_rect(event,x,y,flags,param):
+    if event == cv2.EVENT_LBUTTONDOWN:
+        cv2.rectangle(img, (x, y), (x + 5, y + 5), (255, 0, 0), -1)
+        xl.append(x)
+        yl.append(y)
 
 
-img1 = cv2.imread("./images/img12.jpg",cv2.IMREAD_GRAYSCALE)
-img1 = cv2.resize(img1,(320,240))
+#img = np.zeros((512,512,3),np.uint8)
+cv2.namedWindow('image')
+cv2.setMouseCallback('image',draw_rect)
 
-h,w = img1.shape
-point1_src = np.float32([[1,1],[w-10,10],[5,h-5],[w-4,h-4]])
-point1_dst = np.float32([[15,15],[w-60,15],[10,h-25],[w-100,h-50]])
-point2_src = np.float32([[148,145],[168,144],[136,233],[188,222]])
-point2_dst = np.float32([[136,145],[188,144],[136,223],[188,222]])
-per_mat1 = cv2.getPerspectiveTransform(point1_src,point1_dst)
-per_mat2 = cv2.getPerspectiveTransform(point2_src,point2_dst)
-res1 = cv2.warpPerspective(img1,per_mat1,(w,h))
-res2 = cv2.warpPerspective(img1,per_mat2,(w,h))
 
-ress = [];
-ress.append(img1),ress.append(res1),ress.append(res2)
 
-for i in range(3):
-    plt.subplot(2,2,i+1)
-    plt.imshow(ress[i],cmap=('gray'))
-    plt.xticks([]),plt.yticks
+while True:
+    cv2.imshow('image',img)
+    if cv2.waitKey(1) & 0xFF==27:
+        break
+    if len(xl)==4:
+        src = np.float32([[xl[0],yl[0]],[xl[1],yl[1]],[xl[2],yl[2]],[xl[3],yl[3]]])
+        dst = np.float32([[xl[0],yl[0]],[xl[0],yl[1]],[xl[3],yl[2]],[xl[3],yl[3]]])
+        per_mat = cv2.getPerspectiveTransform(src,dst)
+        res = cv2.warpPerspective(img,per_mat,(w,h))
+        plt.subplot(2,2,1)
+        plt.imshow(res,cmap='gray')
+        plt.xticks([]),plt.yticks([])
+        plt.show()
+        xl = []
 
-plt.show()
+
+cv2.destroyAllWindows()

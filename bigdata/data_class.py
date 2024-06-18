@@ -1,39 +1,26 @@
-# 관련 라이브러리 선언
+#관련 라이브러리 선언
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 
-# 영상 읽기
-img_src = cv2.imread("./images/img_6_0.png", cv2.IMREAD_GRAYSCALE)
-img1 = cv2.resize(img_src, (320,240))
+#영상 읽기
+img1_src = cv2.imread("./images/img_6_4.png",
+cv2.IMREAD_GRAYSCALE)
+img1 = cv2.resize(img1_src, (320,240))
 
-# 템플릿 매칭 및 결과 추출/처리
-template = img1[5:70, 5:70]
-w, h = template.shape[::-1]
-methods = ['cv2.TM_CCOEFF', 
-            'cv2.TM_CCOEFF_NORMED',
-            'cv2.TM_CCORR',
-            'cv2.TM_CCORR_NORMED',
-            'cv2.TM_SQDIFF',
-            'cv2.TM_SQDIFF_NORMED']
+#코너 검지
+dst = cv2.cornerHarris(img1, 2, 3, 0.06)
+dst = cv2.dilate(dst,None)
+res1 = cv2.cvtColor(img1, cv2.COLOR_GRAY2BGR)
+res1[dst>0.1*dst.max()] = [0,0,255]
 
-for meth in methods:
-    input = img1.copy()
-    method = eval(meth)
-    res = cv2.matchTemplate(img1, template, method)
-    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+#결과 출력
+displays = [("input1", img1),
+("res1", res1)]
+for (name, out) in displays:
+    cv2.imshow(name, out)
+cv2.waitKey(0)
 
-    if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
-        top_left = min_loc
-    else:
-        top_left = max_loc
-    bottom_right = (top_left[0] + w, top_left[1] + h)
-
-    cv2.rectangle(input, top_left, bottom_right, 0, 2)
-    plt.figure()
-    plt.subplot(121), plt.imshow(res, cmap='gray')
-    plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
-    plt.subplot(122), plt.imshow(input, cmap='gray')
-    plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
-    plt.suptitle(meth)
-    plt.show()
+#키보드 입력을 기다린 후 모든 영상창 닫기
+cv2.waitKey(0)
+cv2.destroyAllWindows()

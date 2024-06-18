@@ -1,38 +1,39 @@
+# 관련 라이브러리 선언
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
-img = cv2.imread("KakaoTalk_20240528_112132361.jpg")
-h,w, d = img.shape
-xl = []
-yl = []
 
-def draw_rect(event,x,y,flags,param):
-    if event == cv2.EVENT_LBUTTONDOWN:
-        cv2.rectangle(img, (x, y), (x + 5, y + 5), (255, 0, 0), -1)
-        xl.append(x)
-        yl.append(y)
+# 영상 읽기
+img_src = cv2.imread("./images/img_6_0.png", cv2.IMREAD_GRAYSCALE)
+img1 = cv2.resize(img_src, (320,240))
 
+# 템플릿 매칭 및 결과 추출/처리
+template = img1[5:70, 5:70]
+w, h = template.shape[::-1]
+methods = ['cv2.TM_CCOEFF', 
+            'cv2.TM_CCOEFF_NORMED',
+            'cv2.TM_CCORR',
+            'cv2.TM_CCORR_NORMED',
+            'cv2.TM_SQDIFF',
+            'cv2.TM_SQDIFF_NORMED']
 
-#img = np.zeros((512,512,3),np.uint8)
-cv2.namedWindow('image')
-cv2.setMouseCallback('image',draw_rect)
+for meth in methods:
+    input = img1.copy()
+    method = eval(meth)
+    res = cv2.matchTemplate(img1, template, method)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
 
+    if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
+        top_left = min_loc
+    else:
+        top_left = max_loc
+    bottom_right = (top_left[0] + w, top_left[1] + h)
 
-
-while True:
-    cv2.imshow('image',img)
-    if cv2.waitKey(1) & 0xFF==27:
-        break
-    if len(xl)==4:
-        src = np.float32([[xl[0],yl[0]],[xl[1],yl[1]],[xl[2],yl[2]],[xl[3],yl[3]]])
-        dst = np.float32([[xl[0],yl[0]],[xl[0],yl[1]],[xl[3],yl[2]],[xl[3],yl[3]]])
-        per_mat = cv2.getPerspectiveTransform(src,dst)
-        res = cv2.warpPerspective(img,per_mat,(w,h))
-        plt.subplot(2,2,1)
-        plt.imshow(res,cmap='gray')
-        plt.xticks([]),plt.yticks([])
-        plt.show()
-        xl = []
-
-
-cv2.destroyAllWindows()
+    cv2.rectangle(input, top_left, bottom_right, 0, 2)
+    plt.figure()
+    plt.subplot(121), plt.imshow(res, cmap='gray')
+    plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
+    plt.subplot(122), plt.imshow(input, cmap='gray')
+    plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
+    plt.suptitle(meth)
+    plt.show()

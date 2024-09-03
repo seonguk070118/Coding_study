@@ -1,26 +1,21 @@
-#관련 라이브러리 선언
-import numpy as np
 import cv2
-from matplotlib import pyplot as plt
 
-#영상 읽기
-img1_src = cv2.imread("./images/img_6_4.png",
-cv2.IMREAD_GRAYSCALE)
-img1 = cv2.resize(img1_src, (320,240))
+CAMERA_ID = 0
 
-#코너 검지
-dst = cv2.cornerHarris(img1, 2, 3, 0.06)
-dst = cv2.dilate(dst,None)
-res1 = cv2.cvtColor(img1, cv2.COLOR_GRAY2BGR)
-res1[dst>0.1*dst.max()] = [0,0,255]
+cam = cv2.VideoCapture(CAMERA_ID)
+if cam.isOpened() == False:
+    print
+    'Cannot open the camera-%d'%(CAMERA_ID)
+    exit()
 
-#결과 출력
-displays = [("input1", img1),
-("res1", res1)]
-for (name, out) in displays:
-    cv2.imshow(name, out)
-cv2.waitKey(0)
+cv2.namedWindow('CAM Window')
 
-#키보드 입력을 기다린 후 모든 영상창 닫기
-cv2.waitKey(0)
+while(True):
+    ret, frame = cam.read()
+    cv2.imread('CAM Window',frame)
+
+    if cv2.waitKey(10) > 0:
+        break
+
+cam.release()
 cv2.destroyAllWindows()

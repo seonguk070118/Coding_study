@@ -1,0 +1,73 @@
+import cv2
+import numpy as np
+
+def mode(x):
+    global bgMethod1, bgMethod2
+    if x == 0:
+        global fgMethod
+        fgMethod = bgMethod1
+    else:
+        fgMethod = bgMethod2
+
+def history(x):
+    bgMethod1.setHistory(x)
+    bgMethod2.setHistory(x)
+
+# 카메라 세팅하기
+CAMERA_ID = 0
+
+cam = cv2.VideoCapture(CAMERA_ID)
+if not cam.isOpened():
+    print('카메라를 열 수 없습니다.')
+    exit()
+
+# 비디오 쓰기 설정하기
+width = int(cam.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(cam.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+vod = cv2.VideoWriter('output.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 30, (width, height))
+
+# 윈도우 설정하기
+cv2.namedWindow('image', cv2.WINDOW_NORMAL)
+
+cv2.createTrackbar('mode', 'image', 0, 1, mode)
+cv2.createTrackbar('history', 'image', 0, 500, history) 
+cv2.setTrackbarPos('history', 'image', 500)
+
+bgMethod1 = cv2.createBackgroundSubtractorMOG2()
+bgMethod2 = cv2.createBackgroundSubtractorKNN()
+
+fgMethod = bgMethod1
+
+while True:
+    # 카메라 영상 읽기
+    ret, frame = cam.read()
+    if not ret:
+        print('프레임을 얻을 수 없습니다.')
+        break
+
+    fgMask = fgMethod.apply(frame)
+    fgMask_bgr = cv2.cvtColor(fgMask,cv2.COLOR_GRAY2BGR)
+    b = cv2.getTrackbarPos('history', 'image')
+    cv2.putText(fgMask_bgr, f'History: {b}', (10, 30), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+    # 마스크를 그레이 이미지로 변환
+    cv2.imshow('image', fgMask_bgr)
+
+    # 비디오 파일에 프레임 저장
+    vod.write(fgMask_bgr)
+
+    key = cv2.waitKey(5) & 0xFF
+    if key == 111:
+        a = cv2.getTrackbarPos('history', 'image')
+        a = max(0,a-10)
+        cv2.setTrackbarPos('history', 'image', a)
+    if key == 112:
+        a = cv2.getTrackbarPos('history', 'image')
+        a = max(0,a+10)
+        cv2.setTrackbarPos('history', 'image', a)
+    if key == 27:  # ESC 키로 종료
+        break
+
+cam.release()  # 카메라 해제하기
+vod.release()  # 비디오 파일 해제하기
+cv2.destroyAllWindows()

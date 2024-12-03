@@ -1,0 +1,56 @@
+import cv2
+import numpy as np
+import random
+
+# 초기설정
+canvas = np.ones((600, 800, 3), dtype=np.uint8) * 255 
+drawing = False 
+start_x, start_y = -1, -1
+circles = [] 
+current_color = (0, 0, 0) 
+
+def draw_circle(event, x, y, flags, param):
+    global start_x, start_y, drawing, canvas, circles, current_color
+    
+    if event == cv2.EVENT_LBUTTONDOWN:
+        drawing = True
+        start_x, start_y = x, y 
+        current_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
+    elif event == cv2.EVENT_MOUSEMOVE:
+        if drawing:
+            temp_canvas = canvas.copy()
+            radius = int(((x - start_x) ** 2 + (y - start_y) ** 2) ** 0.5)
+            cv2.circle(temp_canvas, (start_x, start_y), radius, current_color, 2)
+            cv2.imshow('Canvas', temp_canvas)
+
+    elif event == cv2.EVENT_LBUTTONUP:
+        drawing = False
+        radius = int(((x - start_x) ** 2 + (y - start_y) ** 2) ** 0.5)
+        if radius > 0:
+            cv2.circle(canvas, (start_x, start_y), radius, current_color, 2)
+            circles.append((start_x, start_y, radius, current_color))
+            cv2.imshow('Canvas', canvas)
+
+def count_circles():
+    return len(circles)
+
+cv2.namedWindow('Canvas')
+cv2.setMouseCallback('Canvas', draw_circle)
+cv2.imshow('Canvas', canvas)
+
+while True:
+    circle_count = count_circles()
+    display_canvas = canvas.copy()
+    cv2.putText(display_canvas, f'count: {circle_count}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+
+    cv2.imshow('Canvas', display_canvas)
+
+    key = cv2.waitKey(1) & 0xFF
+    if key == 27: 
+        break
+    elif key == ord('e'):  
+        canvas = np.ones((600, 800, 3), dtype=np.uint8) * 255  
+        circles.clear() 
+
+cv2.destroyAllWindows()

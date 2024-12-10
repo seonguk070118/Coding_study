@@ -1,20 +1,21 @@
 import cv2
-import numpy as np
-import os
-save_dir = "./code_res_imgs/c3_opticalFlow" 
-if not os.path.exists(save_dir):
-    os.makedirs(save_dir)
 
-cap =cv2.VideoCapture("./../images/video7.mp4")
-numMaxCorners = 20
-feature_params=dict(maxCorners = numMaxCorners,qualityLevel = 0.3,minDistance = 7,blockSize=7)
+src = cv2.imread("multiple-blob.png")
+dst = src.copy()
 
-lk_params = dict(winSize = (15,15),maxLevel =2,criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
+gray = cv2. cvtColor(src,cv2.COLOR_RGB2GRAY)
+ret, binary = cv2.threshold(gray, 150,255,cv2.THRESH_BINARY_INV)
+contours,hierarchy = cv2.findContours(binary,cv2.RETR_CCOMP,cv2.CHAIN_APPROX_NONE)
 
-ret,prevFrame = cap.read()
-prevFrame = cv2.resize(prevFrame, (320, 240))
-prevGray = cv2.cvtColor(prevFrame, cv2.COLOR_BGR2GRAY)
-p0 = cv2.goodFeaturesToTrack(prevGray, mask = None, **feature_params)
+for i in contours:
+    M = cv2.moments(i)
+    cX = int(M['m10'] / M['m00'])
+    cY = int(M['m01'] / M['m00'])
 
-flowColor = np.random.randint(0,255, (numMaxCorners, 3))
-mask = np.zeros_like(prevFrame)
+    cv.circle(dst,(cX,cY), 3, (255,0,0),-1)
+    cv2.drawContours(dst, [i],0,(0,0,255),2)
+
+cv2.imshow("binary",binary)
+cv2.imshow("dst",dst)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

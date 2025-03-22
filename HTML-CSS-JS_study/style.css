@@ -1,0 +1,20 @@
+div{
+    width:400px;
+    height:250px;
+    padding:20px;
+    border:20px solid rgba(100,100,100,0.493);
+    margin-bottom:20px;
+    overflow:auto;
+    background-image:url('./image/bg3.png');
+    background-repeat: no-repeat;
+    background-position:right top;
+}
+#bg1{
+    background-origin:padding-box;
+}
+#bg2{
+    background-origin:border-box;
+}
+#bg3{
+    background-origin:content-box;
+}
